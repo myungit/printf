@@ -6,11 +6,13 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 11:27:21 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/04 11:42:23 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:58:49 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(const char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
 	int i;
 
