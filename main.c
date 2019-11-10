@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 16:42:04 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/06 22:09:25 by mpark-ki         ###   ########.fr       */
+/*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
+/*   Updated: 2019/11/10 19:47:08 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "libft.h"
+#include "./src/libft.h"
 
 int		main(void)
 {
+	printf("isalpha\n");
 	printf("%d %d\n", isalpha(0), ft_isalpha(0));
 	printf("%d %d\n", isalpha(127), ft_isalpha(127));
 	printf("%d %d\n", isalpha(500), ft_isalpha(500));
@@ -75,15 +76,15 @@ int		main(void)
 	printf("%d %d\n", tolower(97), ft_tolower(97));
 	printf("%d %d\n", tolower(122), ft_tolower(122));
 	printf("%d %d\n", tolower(66), ft_tolower(66));
-	char	hi[] = "hi man, how are you? ";
+	char	hi1[] = "hi man, how are you? ";
 	char	hi2[] = "hi man, how are you? ";
 	int		i = 0;
-	bzero(hi, 5);
+	bzero(hi1, 5);
 	ft_bzero(hi2, 5);
 	printf("bzero\n");
 	while (i++ < 5)
 	{
-		printf("%c", hi[i]);
+		printf("%c", hi1[i]);
 	}
 	printf("\n");
 	i = 0;
@@ -93,21 +94,61 @@ int		main(void)
 	}
 	printf("\n");
 	char hi3[] = "hi man, how are you?";
-	char hi4[] = "123456";
-	char hi5[] = "hi man, how are you?";
-	char hi6[] = "123456";
+	char hi4[] = "hi man, how are you?";
 	printf("memcpy\n");
-	char string [] = "stackoverflow";
-    char *first, *second;
-    first = string;
-    second = string;
+	char string[] = "stackoverflow";
+	char string2[] = "stackoverflow";
+	char string3[] = "stackoverflow";
+	char string4[] = "stackoverflow";
+	char *first, *second, *third, *fourth;
+	first = string;
+	second = string2;
+	third = string3;
+	fourth = string4;
+	puts(string);
 
-    puts(string);
-    memcpy(first+5, first, 7);
-    puts(first);
-    ft_memcpy(second+5, second, 7);
-    puts(second);
-	
-	printf("%s\n", ft_memcpy(&hi3[4], hi3, 4));
-	printf("%s\n", memcpy(&hi5[1], hi5, 4));
+	memcpy(first+5, first, 7);
+	puts(first);
+	ft_memcpy(second+5, second, 7);
+	puts(second);
+
+	printf("%s\n", memcpy(hi3+6, hi3, 7));
+	printf("%s\n", ft_memcpy(hi4+6, hi4, 7));
+
+	char hi7[] = "abcdefghijklmnopqrstuvwxyz";
+	char hi8[] = "abcdefghijklmnopqrstuvwxyz";
+	printf("memccpy\n");
+	printf("%s\n", memccpy(hi7+5, hi7, 'e', 5));
+	printf("%s\n", ft_memccpy(hi8+5, hi8, 'e', 5));
+	printf("%s\n%s\n", hi7, hi8);
+	printf("%s\n", memccpy(hi7+7, hi7, 'd', 5));
+	printf("%s\n", ft_memccpy(hi8+7, hi8, 'd', 5));
+	printf("%s\n%s\n", hi7, hi8);
+	char hi5[] = "abcdefghijklmnopqrstuvwxyz";
+	char hi6[] = "abcdefghijklmnopqrstuvwxyz";
+	printf("--------------------memmove\n");
+	printf("%s\n", memmove(hi5+5, hi5, 5));
+	printf("%s\n", ft_memmove(hi6+5, hi6, 5));
+	printf("---------------------hi5 and hi6\n%s\n%s\n", hi5, hi6);
+	printf("---------------------second test\n");
+	printf("%s\n", memmove(hi5+7, hi5, 5));
+	printf("%s\n", ft_memmove(hi6+7, hi6, 5));
+	printf("---------------------hi5 and hi6\n%s\n%s\n", hi5, hi6);
+	char csrc[100] = "Geeksfor";
+	char csrc1[100] = "Geeksfor";
+	printf("%s\n", memmove(csrc+5, csrc, strlen(csrc)+1));
+	printf("%s\n", csrc);
+	printf("%s\n", ft_memmove(csrc1+5, csrc1, strlen(csrc1)+1));
+	printf("%s\n", csrc1);
+	printf("memchr\n");
+	char chrme[] = "Geeksfor";
+	printf("%s\n", chrme);
+	printf("%s %s\n", memchr(chrme, 'k', 0), ft_memchr(chrme, 'k', 0));
+	printf("%s %s\n", memchr(chrme, 'a', 127), ft_memchr(chrme, 'a', 127));
+	printf("%s %s\n", memchr(chrme, 'k', 500), ft_memchr(chrme, 'k', 500));
+	printf("%s %s\n", memchr(chrme, 'o', 48), ft_memchr(chrme, 'o', 48));
+	printf("%s %s\n", memchr(chrme, 115, 48), ft_memchr(chrme, 115, 48));
+	printf("%s %s\n", memchr(chrme, 0, 48), ft_memchr(chrme, 0, 48));
+	printf("%s\n", chrme);
+
 }
