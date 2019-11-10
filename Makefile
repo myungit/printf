@@ -6,7 +6,7 @@
 #    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/08 20:20:34 by mpark-ki          #+#    #+#              #
-#    Updated: 2019/11/10 19:33:09 by mpark-ki         ###   ########.fr        #
+#    Updated: 2019/11/10 22:14:34 by mpark-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
 	   ft_isascii.c ft_isdigit.c ft_isprint.c ft_isspace.c \
 	   ft_memccpy.c ft_memcpy.c ft_memmove.c ft_memset.c \
 	   ft_strlcpy.c ft_strlen.c ft_tolower.c ft_toupper.c ft_memchr.c \
-
+	   ft_memcmp.c
 HEADER = libft.h
 FILES = $(patsubst %, $(SRC_DIR)%, $(OBJS))
 
