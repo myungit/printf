@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/10 23:02:01 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/11 22:57:42 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		main(void)
 	printf("\n");
 	char hi3[] = "hi man, how are you?";
 	char hi4[] = "hi man, how are you?";
-	printf("memcpy\n");
+	printf("\nmemcpy\n");
 	char string[] = "stackoverflow";
 	char string2[] = "stackoverflow";
 	char string3[] = "stackoverflow";
@@ -124,30 +124,28 @@ int		main(void)
 	fourth = string4;
 	puts(string);
 
-	memcpy(first+5, first, 7);
+	memcpy(first + 5, first, 7);
 	puts(first);
-	ft_memcpy(second+5, second, 7);
+	ft_memcpy(second + 5, second, 7);
 	puts(second);
 
-	printf("%s\n", memcpy(hi3+6, hi3, 7));
-	printf("%s\n", ft_memcpy(hi4+6, hi4, 7));
+	printf("%s\n", memcpy(hi3 + 6, hi3, 7));
+	printf("%s\n", ft_memcpy(hi4 + 6, hi4, 7));
 
 	char hi7[] = "abcdefghijklmnopqrstuvwxyz";
 	char hi8[] = "abcdefghijklmnopqrstuvwxyz";
-	printf("memccpy\n");
-	printf("%s\n", memccpy(hi7+5, hi7, 'e', 5));
-	printf("%s\n", ft_memccpy(hi8+5, hi8, 'e', 5));
-	printf("equal? %d\n", memccpy(hi7+5, hi7, 'e', 5) == ft_memccpy(hi8+5, hi8, 'e', 5));
+	printf("\nmemccpy\n");
+	printf("%s\n", memccpy(hi7 + 5, hi7, 'e', 5));
+	printf("%s\n", ft_memccpy(hi8 + 5, hi8, 'e', 5));
 	printf("%s\n%s\n", hi7, hi8);
-	printf("%s\n", memccpy(hi7+7, hi7, 'd', 5));
-	printf("%s\n", ft_memccpy(hi8+7, hi8, 'd', 5));
-	printf("equal? %d\n", memccpy(hi7+7, hi7, 'd', 5) == ft_memccpy(hi8+7, hi8, 'd', 5));
+	printf("%s\n", memccpy(hi7 + 7, hi7, 'd', 5));
+	printf("%s\n", ft_memccpy(hi8 + 7, hi8, 'd', 5));
 	printf("%s\n%s\n", hi7, hi8);
 	char hi5[] = "abcdefghijklmnopqrstuvwxyz";
 	char hi6[] = "abcdefghijklmnopqrstuvwxyz";
-	printf("--------------------memmove\n");
-	printf("%s\n", memmove(hi5+5, hi5, 5));
-	printf("%s\n", ft_memmove(hi6+5, hi6, 5));
+	printf("\n--------------------memmove\n");
+	printf("%s\n", memmove(hi5 + 5, hi5, 5));
+	printf("%s\n", ft_memmove(hi6 + 5, hi6, 5));
 	printf("---------------------hi5 and hi6\n%s\n%s\n", hi5, hi6);
 	printf("---------------------second test\n");
 	printf("%s\n", memmove(hi5+7, hi5, 5));
@@ -155,13 +153,12 @@ int		main(void)
 	printf("---------------------hi5 and hi6\n%s\n%s\n", hi5, hi6);
 	char csrc[100] = "Geeksfor";
 	char csrc1[100] = "Geeksfor";
-	printf("%s\n", memmove(csrc+5, csrc, strlen(csrc)+1));
+	printf("%s\n", memmove(csrc + 5, csrc, strlen(csrc)+1));
 	printf("%s\n", csrc);
-	printf("%s\n", ft_memmove(csrc1+5, csrc1, strlen(csrc1)+1));
+	printf("%s\n", ft_memmove(csrc1 + 5, csrc1, strlen(csrc1)+1));
 	printf("%s\n", csrc1);
 	printf("\nmemchr\n");
 	char chrme[] = "Geepksfor";
-	printf("%s\n", chrme);
 	i = -1;
 	while (i++ < 500)
 		j += testft(i, (int)memchr(chrme, i, i), (int)ft_memchr(chrme, i, i));
@@ -193,11 +190,11 @@ int		main(void)
 	else
 		printf("[OK] memchr\n");
 	if (
-			memchr(chrme, 'a', 127), ft_memchr(chrme, 'a', 127) ||
-			memchr(chrme, 'k', 500), ft_memchr(chrme, 'k', 500) ||
-			memchr(chrme, 'o', 48), ft_memchr(chrme, 'o', 48) ||  			
-			memchr(chrme, 115, 48), ft_memchr(chrme, 115, 48) ||
-			memchr(chrme, 0, 48), ft_memchr(chrme, 0, 48) 
+			memchr(chrme, 'a', 127) != ft_memchr(chrme, 'a', 127) ||
+			memchr(chrme, 'k', 500) != ft_memchr(chrme, 'k', 500) ||
+			memchr(chrme, 'o', 48) != ft_memchr(chrme, 'o', 48) ||  			
+			memchr(chrme, 115, 48) != ft_memchr(chrme, 115, 48) ||
+			memchr(chrme, 0, 48) != ft_memchr(chrme, 0, 48) 
 	   )
 	{
 		printf("ERRROR\n");
@@ -209,14 +206,13 @@ int		main(void)
 	}
 	else
 		printf("[OK] memchr additional tests\n");
-	printf("%s\n", chrme);
-	char cmp1[] = "hi";
-	char cmp2[] = "hi ";
-	char cmp3[] = "hello";
-	char cmp4[] = " hello";
+	char cmp1[] = "hi		ii	";
+	char cmp2[] = "hi i		opawn	";
+	char cmp3[] = "hellohi.  ";
+	char cmp4[] = " hellor ";
 	char cmp5[] = "    5rownawe;ls";
-	char cmp6[] = "5hi";
-	char cmp7[] = " ffPo";
+	char cmp6[] = "5hi np";
+	char cmp7[] = " ffPo rr";
 	char cmp8[] = "   awjewowP";
 	if (
 			memcmp(cmp1, cmp1, 50) != ft_memcmp(cmp1, cmp1, 50) ||
@@ -257,4 +253,152 @@ int		main(void)
 	}
 	else
 		printf("[OK] memcmp\n");
+	if (
+			strlen(cmp1) != ft_strlen(cmp1) ||
+			strlen(cmp2) != ft_strlen(cmp2) ||
+			strlen(cmp3) != ft_strlen(cmp3) ||
+			strlen(cmp4) != ft_strlen(cmp4) ||
+			strlen(cmp5) != ft_strlen(cmp5) ||
+			strlen(cmp6) != ft_strlen(cmp6) ||
+			strlen(cmp7) != ft_strlen(cmp7) ||
+			strlen(cmp8) != ft_strlen(cmp8)
+	   )
+	{
+		printf("ERROR\n");
+		printf("%lu %lu\n", strlen(cmp1), ft_strlen(cmp1));
+		printf("%lu %lu\n", strlen(cmp2), ft_strlen(cmp2));
+		printf("%lu %lu\n", strlen(cmp3), ft_strlen(cmp3));
+		printf("%lu %lu\n", strlen(cmp4), ft_strlen(cmp4));
+		printf("%lu %lu\n", strlen(cmp5), ft_strlen(cmp5));
+		printf("%lu %lu\n", strlen(cmp6), ft_strlen(cmp6));
+		printf("%lu %lu\n", strlen(cmp7), ft_strlen(cmp7));
+		printf("%lu %lu\n", strlen(cmp8), ft_strlen(cmp8));
+	}
+	else
+		printf("[OK] strlen\n");
+	if (
+			strlcpy(cmp1, cmp2, 5) != ft_strlcpy(cmp1, cmp2, 5) ||
+			strlcpy(cmp2, cmp1, 5) != ft_strlcpy(cmp2, cmp1, 5) ||
+			strlcpy(cmp3, cmp4, 5) != ft_strlcpy(cmp3, cmp4, 5) ||
+			strlcpy(cmp4, cmp3, 5) != ft_strlcpy(cmp4, cmp3, 5) ||
+			strlcpy(cmp5, cmp6, 5) != ft_strlcpy(cmp5, cmp6, 5) ||
+			strlcpy(cmp6, cmp5, 5) != ft_strlcpy(cmp6, cmp5, 5) ||
+			strlcpy(cmp7, cmp8, 5) != ft_strlcpy(cmp7, cmp8, 5) ||
+			strlcpy(cmp8, cmp7, 5) != ft_strlcpy(cmp8, cmp7, 5)
+	   )
+	{
+		printf("ERROR\n");
+		printf("%lu %lu\n", strlcpy(cmp1, cmp2, 5), ft_strlcpy(cmp1, cmp2, 5));
+		printf("%lu %lu\n", strlcpy(cmp2, cmp1, 5), ft_strlcpy(cmp2, cmp1, 5));
+		printf("%lu %lu\n", strlcpy(cmp3, cmp4, 5), ft_strlcpy(cmp3, cmp4, 5));
+		printf("%lu %lu\n", strlcpy(cmp4, cmp3, 5), ft_strlcpy(cmp4, cmp3, 5));
+		printf("%lu %lu\n", strlcpy(cmp5, cmp6, 5), ft_strlcpy(cmp5, cmp6, 5));
+		printf("%lu %lu\n", strlcpy(cmp6, cmp5, 5), ft_strlcpy(cmp6, cmp5, 5));
+		printf("%lu %lu\n", strlcpy(cmp7, cmp8, 5), ft_strlcpy(cmp7, cmp8, 5));
+		printf("%lu %lu\n", strlcpy(cmp8, cmp7, 5), ft_strlcpy(cmp8, cmp7, 5));
+	}
+	else
+		printf("[OK] strlcpy\n");
+	i = -1;
+	while (i++ < 6)
+	{
+		if (
+				strlcat(cmp1, cmp2, i) != ft_strlcat(cmp1, cmp2, i) ||
+				strlcat(cmp2, cmp1, i) != ft_strlcat(cmp2, cmp1, i) ||
+				strlcat(cmp3, cmp4, i) != ft_strlcat(cmp3, cmp4, i) ||
+				strlcat(cmp4, cmp3, i) != ft_strlcat(cmp4, cmp3, i) ||
+				strlcat(cmp5, cmp6, i) != ft_strlcat(cmp5, cmp6, i) ||
+				strlcat(cmp6, cmp5, i) != ft_strlcat(cmp6, cmp5, i) ||
+				strlcat(cmp7, cmp8, i) != ft_strlcat(cmp7, cmp8, i) ||
+				strlcat(cmp8, cmp7, i) != ft_strlcat(cmp8, cmp7, i)
+		   )
+		{
+			printf("ERROR\n");
+			printf("%lu %lu\n", strlcat(cmp1, cmp2, i), ft_strlcat(cmp1, cmp2, i));
+			printf("%lu %lu\n", strlcat(cmp2, cmp1, i), ft_strlcat(cmp2, cmp1, i));
+			printf("%lu %lu\n", strlcat(cmp3, cmp4, i), ft_strlcat(cmp3, cmp4, i));
+			printf("%lu %lu\n", strlcat(cmp4, cmp3, i), ft_strlcat(cmp4, cmp3, i));
+			printf("%lu %lu\n", strlcat(cmp5, cmp6, i), ft_strlcat(cmp5, cmp6, i));
+			printf("%lu %lu\n", strlcat(cmp6, cmp5, i), ft_strlcat(cmp6, cmp5, i));
+			printf("%lu %lu\n", strlcat(cmp7, cmp8, i), ft_strlcat(cmp7, cmp8, i));
+			printf("%lu %lu\n", strlcat(cmp8, cmp7, i), ft_strlcat(cmp8, cmp7, i));
+		}
+		else
+			printf("[OK] strlcat%d\n", i);
+	}
+	i = 0;
+	char schrme[] = "Great I amgG reat";
+	while (i <= ft_strlen(schrme))
+	{
+		if (
+				strchr(schrme, schrme[i]) != ft_strchr(schrme, schrme[i]) ||
+				strchr(schrme, schrme[i + i]) != ft_strchr(schrme, schrme[i + i]) ||
+				strchr(schrme, schrme[i - i]) != ft_strchr(schrme, schrme[i - i]) ||
+				strchr(schrme, schrme[i * i]) != ft_strchr(schrme, schrme[i * i])
+		   )
+		{
+			printf("ERRROR i: %d\n", i);
+			printf("%s %s\n", strchr(schrme, schrme[i]), ft_strchr(schrme, schrme[i]));
+			printf("%s %s\n", strchr(schrme, schrme[i + i]), ft_strchr(schrme, schrme[i + i]));
+			printf("%s %s\n", strchr(schrme, schrme[i - i]), ft_strchr(schrme, schrme[i - i]));
+			printf("%s %s\n", strchr(schrme, schrme[i * i]), ft_strchr(schrme, schrme[i * i]));
+		}
+		else
+			printf("[OK] strchr%d\n", i);
+		i++;
+	}
+	if (
+			strchr(schrme, 'a') != ft_strchr(schrme, 'a') ||
+			strchr(schrme, 107) != ft_strchr(schrme, 107) ||
+			strchr(schrme, 'o') != ft_strchr(schrme, 'o') ||  			
+			strchr(schrme, 115) != ft_strchr(schrme, 115) ||
+			strchr(schrme, 0) != ft_strchr(schrme, 0) 
+	   )
+	{
+		printf("ERRROR\n");
+		printf("%s %s\n", strchr(schrme, 'a'), ft_strchr(schrme, 'a'));
+		printf("%s %s\n", strchr(schrme, 109), ft_strchr(schrme, 109));
+		printf("%s %s\n", strchr(schrme, 'o'), ft_strchr(schrme, 'o'));
+		printf("%s %s\n", strchr(schrme, 115), ft_strchr(schrme, 115));
+		printf("%s %s\n", strchr(schrme, 0), ft_strchr(schrme, 0));
+	}
+	else
+		printf("[OK] strchr additional tests\n");
+	i = 0;
+	while (i <= ft_strlen(schrme))
+	{
+		if (
+				strrchr(schrme, schrme[i]) != ft_strrchr(schrme, schrme[i]) ||
+				strrchr(schrme, schrme[i + i]) != ft_strrchr(schrme, schrme[i + i]) ||
+				strrchr(schrme, schrme[i - i]) != ft_strrchr(schrme, schrme[i - i]) ||
+				strrchr(schrme, schrme[i * i]) != ft_strrchr(schrme, schrme[i * i])
+		   )
+		{
+			printf("ERRROR i: %d\n", i);
+			printf("%s %s\n", strrchr(schrme, schrme[i]), ft_strrchr(schrme, schrme[i]));
+			printf("%s %s\n", strrchr(schrme, schrme[i + i]), ft_strrchr(schrme, schrme[i + i]));
+			printf("%s %s\n", strrchr(schrme, schrme[i - i]), ft_strrchr(schrme, schrme[i - i]));
+			printf("%s %s\n", strrchr(schrme, schrme[i * i]), ft_strrchr(schrme, schrme[i * i]));
+		}
+		else
+			printf("[OK] strrchr%d\n", i);
+		i++;
+	}
+	if (
+			strrchr(schrme, 'a') != ft_strrchr(schrme, 'a') ||
+			strrchr(schrme, 107) != ft_strrchr(schrme, 107) ||
+			strrchr(schrme, 'o') != ft_strrchr(schrme, 'o') ||  			
+			strrchr(schrme, 115) != ft_strrchr(schrme, 115) ||
+			strrchr(schrme, 0) != ft_strrchr(schrme, 0) 
+	   )
+	{
+		printf("ERRROR\n");
+		printf("%s %s\n", strrchr(schrme, 'a'), ft_strrchr(schrme, 'a'));
+		printf("%s %s\n", strrchr(schrme, 109), ft_strrchr(schrme, 109));
+		printf("%s %s\n", strrchr(schrme, 'o'), ft_strrchr(schrme, 'o'));
+		printf("%s %s\n", strrchr(schrme, 115), ft_strrchr(schrme, 115));
+		printf("%s %s\n", strrchr(schrme, 0), ft_strrchr(schrme, 0));
+	}
+	else
+		printf("[OK] strrchr additional tests\n");
 }
