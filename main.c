@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/11 22:57:42 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/13 22:08:26 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -374,7 +374,7 @@ int		main(void)
 				strrchr(schrme, schrme[i * i]) != ft_strrchr(schrme, schrme[i * i])
 		   )
 		{
-			printf("ERRROR i: %d\n", i);
+			printf("ERRROR i: %d %c\n", i,schrme[i]);
 			printf("%s %s\n", strrchr(schrme, schrme[i]), ft_strrchr(schrme, schrme[i]));
 			printf("%s %s\n", strrchr(schrme, schrme[i + i]), ft_strrchr(schrme, schrme[i + i]));
 			printf("%s %s\n", strrchr(schrme, schrme[i - i]), ft_strrchr(schrme, schrme[i - i]));
@@ -386,19 +386,146 @@ int		main(void)
 	}
 	if (
 			strrchr(schrme, 'a') != ft_strrchr(schrme, 'a') ||
-			strrchr(schrme, 107) != ft_strrchr(schrme, 107) ||
-			strrchr(schrme, 'o') != ft_strrchr(schrme, 'o') ||  			
+			strrchr(schrme, 'G') != ft_strrchr(schrme, 'G') ||
+			strrchr(schrme, 73) != ft_strrchr(schrme, 73) ||  			
 			strrchr(schrme, 115) != ft_strrchr(schrme, 115) ||
 			strrchr(schrme, 0) != ft_strrchr(schrme, 0) 
 	   )
 	{
 		printf("ERRROR\n");
 		printf("%s %s\n", strrchr(schrme, 'a'), ft_strrchr(schrme, 'a'));
-		printf("%s %s\n", strrchr(schrme, 109), ft_strrchr(schrme, 109));
-		printf("%s %s\n", strrchr(schrme, 'o'), ft_strrchr(schrme, 'o'));
+		printf("%s %s\n", strrchr(schrme, 'G'), ft_strrchr(schrme, 'G'));
+		printf("%s %s\n", strrchr(schrme, 'I'), ft_strrchr(schrme, 'I'));
 		printf("%s %s\n", strrchr(schrme, 115), ft_strrchr(schrme, 115));
 		printf("%s %s\n", strrchr(schrme, 0), ft_strrchr(schrme, 0));
 	}
 	else
 		printf("[OK] strrchr additional tests\n");
+	i = 0;
+	char	cmp9[] = "";
+	char	cmp10[] = "Hem bro's, 'sWhat's up?i ey";
+	char	cmp11[] = "ey ";
+	while (i <= 50)
+	{
+		if (
+				strnstr(cmp1, cmp1, i) != ft_strnstr(cmp1, cmp1, i) ||
+				strnstr(cmp1, cmp2, i) != ft_strnstr(cmp1, cmp2, i) ||
+				strnstr(cmp2, cmp1, i) != ft_strnstr(cmp2, cmp1, i) ||
+				strnstr(cmp2, cmp2, i) != ft_strnstr(cmp2, cmp2, i) ||
+				strnstr(cmp3, cmp3, i) != ft_strnstr(cmp3, cmp3, i) ||
+				strnstr(cmp3, cmp4, i) != ft_strnstr(cmp3, cmp4, i) ||
+				strnstr(cmp4, cmp3, i) != ft_strnstr(cmp4, cmp3, i) ||
+				strnstr(cmp4, cmp4, i) != ft_strnstr(cmp4, cmp4, i) ||
+				strnstr(cmp5, cmp5, i) != ft_strnstr(cmp5, cmp5, i) ||
+				strnstr(cmp5, cmp6, i) != ft_strnstr(cmp5, cmp6, i) ||
+				strnstr(cmp6, cmp5, i) != ft_strnstr(cmp6, cmp5, i) ||
+				strnstr(cmp6, cmp6, i) != ft_strnstr(cmp6, cmp6, i) ||
+				strnstr(cmp7, cmp7, i) != ft_strnstr(cmp7, cmp7, i) ||
+				strnstr(cmp7, cmp8, i) != ft_strnstr(cmp7, cmp8, i) ||
+				strnstr(cmp8, cmp7, i) != ft_strnstr(cmp8, cmp7, i) ||
+				strnstr(cmp8, cmp8, i) != ft_strnstr(cmp8, cmp8, i) ||
+				strnstr(cmp8, cmp9, i) != ft_strnstr(cmp8, cmp9, i) ||
+				strnstr(cmp9, cmp8, i) != ft_strnstr(cmp9, cmp8, i) ||
+				strnstr(cmp9, cmp9, i) != ft_strnstr(cmp9, cmp9, i) ||
+				strnstr(cmp9, cmp10, i) != ft_strnstr(cmp9, cmp10, i) ||
+				strnstr(cmp10, cmp9, i) != ft_strnstr(cmp10, cmp9, i) ||
+				strnstr(cmp10, cmp10, i) != ft_strnstr(cmp10, cmp10, i) ||
+				strnstr(cmp10, cmp11, i) != ft_strnstr(cmp10, cmp11, i) ||
+				strnstr(cmp11, cmp10, i) != ft_strnstr(cmp11, cmp10, i) ||
+				strnstr(cmp11, cmp11, i) != ft_strnstr(cmp11, cmp11, i)
+		   )
+		{
+			printf("ERROR i: %d\n", i);
+			printf("%s %s\n", strnstr(cmp1, cmp1, i), ft_strnstr(cmp1, cmp1, i));
+			printf("%s %s\n", strnstr(cmp1, cmp2, i), ft_strnstr(cmp1, cmp2, i));
+			printf("%s %s\n", strnstr(cmp2, cmp1, i), ft_strnstr(cmp2, cmp1, i));
+			printf("%s %s\n", strnstr(cmp2, cmp2, i), ft_strnstr(cmp2, cmp2, i));
+			printf("%s %s\n", strnstr(cmp3, cmp3, i), ft_strnstr(cmp3, cmp3, i));
+			printf("%s %s\n", strnstr(cmp3, cmp4, i), ft_strnstr(cmp3, cmp4, i));
+			printf("%s %s\n", strnstr(cmp4, cmp3, i), ft_strnstr(cmp4, cmp3, i));
+			printf("%s %s\n", strnstr(cmp4, cmp4, i), ft_strnstr(cmp4, cmp4, i));
+			printf("%s %s\n", strnstr(cmp5, cmp5, i), ft_strnstr(cmp5, cmp5, i));
+			printf("%s %s\n", strnstr(cmp5, cmp6, i), ft_strnstr(cmp5, cmp6, i));
+			printf("%s %s\n", strnstr(cmp6, cmp5, i), ft_strnstr(cmp6, cmp5, i));
+			printf("%s %s\n", strnstr(cmp6, cmp6, i), ft_strnstr(cmp6, cmp6, i));
+			printf("%s %s\n", strnstr(cmp7, cmp7, i), ft_strnstr(cmp7, cmp7, i));
+			printf("%s %s\n", strnstr(cmp7, cmp8, i), ft_strnstr(cmp7, cmp8, i));
+			printf("%s %s\n", strnstr(cmp8, cmp7, i), ft_strnstr(cmp8, cmp7, i));
+			printf("%s %s\n", strnstr(cmp8, cmp8, i), ft_strnstr(cmp8, cmp8, i));
+			printf("%s %s\n", strnstr(cmp8, cmp9, i), ft_strnstr(cmp8, cmp9, i));
+			printf("%s %s\n", strnstr(cmp9, cmp8, i), ft_strnstr(cmp9, cmp8, i));
+			printf("%s %s\n", strnstr(cmp9, cmp9, i), ft_strnstr(cmp9, cmp9, i));
+			printf("%s|%s\n", strnstr(cmp9, cmp10, i), ft_strnstr(cmp9, cmp10, i));
+			printf("%s|%s\n", strnstr(cmp10, cmp9, i), ft_strnstr(cmp10, cmp9, i));
+			printf("%s|%s\n", strnstr(cmp10, cmp10, i), ft_strnstr(cmp10, cmp10, i));
+			printf("%s|%s\n", strnstr(cmp10, cmp11, i), ft_strnstr(cmp10, cmp11, i));
+			printf("%s|%s\n", strnstr(cmp11, cmp10, i), ft_strnstr(cmp11, cmp10, i));
+			printf("%s|%s\n", strnstr(cmp11, cmp11, i), ft_strnstr(cmp11, cmp11, i));
+		}
+		else
+			printf("[OK] strnstr%d\n", i);
+		i++;
+	}
+	i = 0;
+	while (i <= 50)
+	{
+		if (
+				strncmp(cmp1, cmp1, i) != ft_strncmp(cmp1, cmp1, i) ||
+				strncmp(cmp1, cmp2, i) != ft_strncmp(cmp1, cmp2, i) ||
+				strncmp(cmp2, cmp1, i) != ft_strncmp(cmp2, cmp1, i) ||
+				strncmp(cmp2, cmp2, i) != ft_strncmp(cmp2, cmp2, i) ||
+				strncmp(cmp3, cmp3, i) != ft_strncmp(cmp3, cmp3, i) ||
+				strncmp(cmp3, cmp4, i) != ft_strncmp(cmp3, cmp4, i) ||
+				strncmp(cmp4, cmp3, i) != ft_strncmp(cmp4, cmp3, i) ||
+				strncmp(cmp4, cmp4, i) != ft_strncmp(cmp4, cmp4, i) ||
+				strncmp(cmp5, cmp5, i) != ft_strncmp(cmp5, cmp5, i) ||
+				strncmp(cmp5, cmp6, i) != ft_strncmp(cmp5, cmp6, i) ||
+				strncmp(cmp6, cmp5, i) != ft_strncmp(cmp6, cmp5, i) ||
+				strncmp(cmp6, cmp6, i) != ft_strncmp(cmp6, cmp6, i) ||
+				strncmp(cmp7, cmp7, i) != ft_strncmp(cmp7, cmp7, i) ||
+				strncmp(cmp7, cmp8, i) != ft_strncmp(cmp7, cmp8, i) ||
+				strncmp(cmp8, cmp7, i) != ft_strncmp(cmp8, cmp7, i) ||
+				strncmp(cmp8, cmp8, i) != ft_strncmp(cmp8, cmp8, i) ||
+				strncmp(cmp8, cmp9, i) != ft_strncmp(cmp8, cmp9, i) ||
+				strncmp(cmp9, cmp8, i) != ft_strncmp(cmp9, cmp8, i) ||
+				strncmp(cmp9, cmp9, i) != ft_strncmp(cmp9, cmp9, i) ||
+				strncmp(cmp9, cmp10, i) != ft_strncmp(cmp9, cmp10, i) ||
+				strncmp(cmp10, cmp9, i) != ft_strncmp(cmp10, cmp9, i) ||
+				strncmp(cmp10, cmp10, i) != ft_strncmp(cmp10, cmp10, i) ||
+				strncmp(cmp10, cmp11, i) != ft_strncmp(cmp10, cmp11, i) ||
+				strncmp(cmp11, cmp10, i) != ft_strncmp(cmp11, cmp10, i) ||
+				strncmp(cmp11, cmp11, i) != ft_strncmp(cmp11, cmp11, i)
+		   )
+		{
+			printf("ERROR i: %d\n", i);
+			printf("%d %d\n", strncmp(cmp1, cmp1, i), ft_strncmp(cmp1, cmp1, i));
+			printf("%d %d\n", strncmp(cmp1, cmp2, i), ft_strncmp(cmp1, cmp2, i));
+			printf("%d %d\n", strncmp(cmp2, cmp1, i), ft_strncmp(cmp2, cmp1, i));
+			printf("%d %d\n", strncmp(cmp2, cmp2, i), ft_strncmp(cmp2, cmp2, i));
+			printf("%d %d\n", strncmp(cmp3, cmp3, i), ft_strncmp(cmp3, cmp3, i));
+			printf("%d %d\n", strncmp(cmp3, cmp4, i), ft_strncmp(cmp3, cmp4, i));
+			printf("%d %d\n", strncmp(cmp4, cmp3, i), ft_strncmp(cmp4, cmp3, i));
+			printf("%d %d\n", strncmp(cmp4, cmp4, i), ft_strncmp(cmp4, cmp4, i));
+			printf("%d %d\n", strncmp(cmp5, cmp5, i), ft_strncmp(cmp5, cmp5, i));
+			printf("%d %d\n", strncmp(cmp5, cmp6, i), ft_strncmp(cmp5, cmp6, i));
+			printf("%d %d\n", strncmp(cmp6, cmp5, i), ft_strncmp(cmp6, cmp5, i));
+			printf("%d %d\n", strncmp(cmp6, cmp6, i), ft_strncmp(cmp6, cmp6, i));
+			printf("%d %d\n", strncmp(cmp7, cmp7, i), ft_strncmp(cmp7, cmp7, i));
+			printf("%d %d\n", strncmp(cmp7, cmp8, i), ft_strncmp(cmp7, cmp8, i));
+			printf("%d %d\n", strncmp(cmp8, cmp7, i), ft_strncmp(cmp8, cmp7, i));
+			printf("%d %d\n", strncmp(cmp8, cmp8, i), ft_strncmp(cmp8, cmp8, i));
+			printf("%d %d\n", strncmp(cmp8, cmp9, i), ft_strncmp(cmp8, cmp9, i));
+			printf("%d %d\n", strncmp(cmp9, cmp8, i), ft_strncmp(cmp9, cmp8, i));
+			printf("%d %d\n", strncmp(cmp9, cmp9, i), ft_strncmp(cmp9, cmp9, i));
+			printf("%d|%d\n", strncmp(cmp9, cmp10, i), ft_strncmp(cmp9, cmp10, i));
+			printf("%d|%d\n", strncmp(cmp10, cmp9, i), ft_strncmp(cmp10, cmp9, i));
+			printf("%d|%d\n", strncmp(cmp10, cmp10, i), ft_strncmp(cmp10, cmp10, i));
+			printf("%d|%d\n", strncmp(cmp10, cmp11, i), ft_strncmp(cmp10, cmp11, i));
+			printf("%d|%d\n", strncmp(cmp11, cmp10, i), ft_strncmp(cmp11, cmp10, i));
+			printf("%d|%d\n", strncmp(cmp11, cmp11, i), ft_strncmp(cmp11, cmp11, i));
+		}
+		else
+			printf("[OK] strncmp%d\n", i);
+		i++;
+	}
 }
