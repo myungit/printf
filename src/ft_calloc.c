@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 18:01:56 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/16 19:40:17 by mpark-ki         ###   ########.fr       */
+/*   Created: 2019/11/16 19:43:30 by mpark-ki          #+#    #+#             */
+/*   Updated: 2019/11/16 20:16:38 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	*ft_calloc(size_t count, size_t size)
 {
-	const size_t	srclen = ft_strlen(src);
-	const size_t	dstlen = ft_strnlen(dst, dstsize);
+	void	*space;
 
-	if (dstlen == dstsize)
-		return (dstsize + srclen);
-	if (srclen < dstsize - dstlen)
-		ft_memcpy(dst + dstlen, src, srclen + 1);
-	else
+	space = malloc(count * size);
+	if (space)
 	{
-		ft_memcpy(dst + dstlen, src, dstsize - 1);
-		dst[dstsize - 1] = '\0';
+		ft_bzero(space, count * size);
+		return (space);
 	}
-	return (dstlen + srclen);
+	return (0);
 }
