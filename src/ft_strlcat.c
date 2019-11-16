@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:01:56 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/11 20:10:39 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/16 18:46:56 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	else
 	{
 		ft_memcpy(dst + dstlen, src, dstsize - 1);
-		dst[dstlen + dstsize - 1] = '\0';
+		dst[dstsize - 1] = '\0';
 	}
 	return (dstlen + srclen);
 }

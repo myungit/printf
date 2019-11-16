@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/13 22:08:26 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/16 18:39:03 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,14 +206,19 @@ int		main(void)
 	}
 	else
 		printf("[OK] memchr additional tests\n");
-	char cmp1[] = "hi		ii	";
-	char cmp2[] = "hi i		opawn	";
-	char cmp3[] = "hellohi.  ";
-	char cmp4[] = " hellor ";
-	char cmp5[] = "    5rownawe;ls";
-	char cmp6[] = "5hi np";
-	char cmp7[] = " ffPo rr";
-	char cmp8[] = "   awjewowP";
+	char	cmp1[50] = "hi		ii	";
+	char	cmp2[50] = "hi i		opawn	";
+	char	cmp3[50] = "hellohi.  ";
+	char	cmp4[50] = " hellor ";
+	char	cmp5[50] = "    5rownawe;ls";
+	char	cmp6[50] = "5hi np";
+	char	cmp7[50] = " ffPo rr";
+	char	cmp8[50] = "   awjewowP";
+	char	cmp9[50] = "";
+	char	cmp10[50] = "Hem bro's, 'sWhat's up?i ey";
+	char	cmp11[50] = "ey ";
+	char	cmp12[50] = "there is no stars in the sky";
+	char	cmp13[50] = "the cake is a lie!\0I'm hidden ol\r\n";
 	if (
 			memcmp(cmp1, cmp1, 50) != ft_memcmp(cmp1, cmp1, 50) ||
 			memcmp(cmp1, cmp2, 50) != ft_memcmp(cmp1, cmp2, 50) ||
@@ -304,24 +309,32 @@ int		main(void)
 	{
 		if (
 				strlcat(cmp1, cmp2, i) != ft_strlcat(cmp1, cmp2, i) ||
-				strlcat(cmp2, cmp1, i) != ft_strlcat(cmp2, cmp1, i) ||
+				strlcat(cmp2, cmp3, i) != ft_strlcat(cmp2, cmp3, i) ||
 				strlcat(cmp3, cmp4, i) != ft_strlcat(cmp3, cmp4, i) ||
-				strlcat(cmp4, cmp3, i) != ft_strlcat(cmp4, cmp3, i) ||
+				strlcat(cmp4, cmp5, i) != ft_strlcat(cmp4, cmp5, i) ||
 				strlcat(cmp5, cmp6, i) != ft_strlcat(cmp5, cmp6, i) ||
-				strlcat(cmp6, cmp5, i) != ft_strlcat(cmp6, cmp5, i) ||
+				strlcat(cmp6, cmp7, i) != ft_strlcat(cmp6, cmp7, i) ||
 				strlcat(cmp7, cmp8, i) != ft_strlcat(cmp7, cmp8, i) ||
-				strlcat(cmp8, cmp7, i) != ft_strlcat(cmp8, cmp7, i)
+				strlcat(cmp8, cmp9, i) != ft_strlcat(cmp8, cmp9, i) ||
+				strlcat(cmp9, cmp10, i) != ft_strlcat(cmp9, cmp10, i) ||
+				strlcat(cmp10, cmp11, i) != ft_strlcat(cmp10, cmp11, i) ||
+				strlcat(cmp11, cmp12, i) != ft_strlcat(cmp11, cmp12, i) ||
+				strlcat(cmp12, cmp13, i) != ft_strlcat(cmp12, cmp13, i)
 		   )
 		{
-			printf("ERROR\n");
-			printf("%lu %lu\n", strlcat(cmp1, cmp2, i), ft_strlcat(cmp1, cmp2, i));
-			printf("%lu %lu\n", strlcat(cmp2, cmp1, i), ft_strlcat(cmp2, cmp1, i));
-			printf("%lu %lu\n", strlcat(cmp3, cmp4, i), ft_strlcat(cmp3, cmp4, i));
-			printf("%lu %lu\n", strlcat(cmp4, cmp3, i), ft_strlcat(cmp4, cmp3, i));
-			printf("%lu %lu\n", strlcat(cmp5, cmp6, i), ft_strlcat(cmp5, cmp6, i));
-			printf("%lu %lu\n", strlcat(cmp6, cmp5, i), ft_strlcat(cmp6, cmp5, i));
-			printf("%lu %lu\n", strlcat(cmp7, cmp8, i), ft_strlcat(cmp7, cmp8, i));
-			printf("%lu %lu\n", strlcat(cmp8, cmp7, i), ft_strlcat(cmp8, cmp7, i));
+			printf("ERROR i: %d\n", i);
+			printf("%lu %lu\n %s", strlcat(cmp1, cmp2, i), ft_strlcat(cmp1, cmp2, i), cmp1);
+			printf("%lu %lu\n %s", strlcat(cmp2, cmp3, i), ft_strlcat(cmp2, cmp3, i), cmp2);
+			printf("%lu %lu\n %s", strlcat(cmp3, cmp4, i), ft_strlcat(cmp3, cmp4, i), cmp3);
+			printf("%lu %lu\n %s", strlcat(cmp4, cmp5, i), ft_strlcat(cmp4, cmp5, i), cmp4);
+			printf("%lu %lu\n %s", strlcat(cmp5, cmp6, i), ft_strlcat(cmp5, cmp6, i), cmp5);
+			printf("%lu %lu\n %s", strlcat(cmp6, cmp7, i), ft_strlcat(cmp6, cmp7, i), cmp6);
+			printf("%lu %lu\n %s", strlcat(cmp7, cmp8, i), ft_strlcat(cmp7, cmp8, i), cmp7);
+			printf("%lu %lu\n %s", strlcat(cmp8, cmp9, i), ft_strlcat(cmp8, cmp9, i), cmp8);
+			printf("%lu %lu\n %s", strlcat(cmp9, cmp10, i), ft_strlcat(cmp9, cmp10, i), cmp9);
+			printf("%lu %lu\n %s", strlcat(cmp10, cmp11, i), ft_strlcat(cmp10, cmp11, i), cmp10);
+			printf("%lu %lu\n %s", strlcat(cmp11, cmp12, i), ft_strlcat(cmp11, cmp12, i), cmp11);
+			printf("%lu %lu\n %s", strlcat(cmp12, cmp13, i), ft_strlcat(cmp12, cmp13, i), cmp12);
 		}
 		else
 			printf("[OK] strlcat%d\n", i);
@@ -402,9 +415,6 @@ int		main(void)
 	else
 		printf("[OK] strrchr additional tests\n");
 	i = 0;
-	char	cmp9[] = "";
-	char	cmp10[] = "Hem bro's, 'sWhat's up?i ey";
-	char	cmp11[] = "ey ";
 	while (i <= 50)
 	{
 		if (
