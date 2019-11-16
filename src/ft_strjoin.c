@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 11:37:52 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/16 23:05:18 by mpark-ki         ###   ########.fr       */
+/*   Created: 2019/11/16 23:25:33 by mpark-ki          #+#    #+#             */
+/*   Updated: 2019/11/16 23:51:06 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	char	*result;
+	char	*start;
+	size_t	len;
 
-	i = 0;
-	if (!src)
+	if (!s1 || !s2)
 		return (0);
-	if (size)
-	{
-		while (i < (size - 1) && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (ft_strlen(src));
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if(!(result = (char*)ft_calloc(1, len)))
+		return (0);
+	start = result;
+	while (*s1)
+		*result++ = *s1++;
+	while (*s2)
+		*result++ = *s2++;
+	return (start);
 }
