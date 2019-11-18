@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/16 23:24:58 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/18 18:28:41 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,4 +539,7 @@ int		main(void)
 	printf("%s||%s\n", &subme[3], ft_substr(subme, 3, 5));
 	printf("%s||%s\n", &subme[7], ft_substr(subme, 7, ft_strlen(subme)));
 	printf("%s\n", ft_substr(0, 7, ft_strlen(subme)));
+	char *hw = "";
+	char *set = "";
+	printf("strtrim:%s\n", ft_strtrim(hw, set));
 }
