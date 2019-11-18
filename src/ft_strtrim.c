@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:15:29 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/18 18:45:53 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/18 18:57:21 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	size_t	j;
 
-	if (!set ||  !s1)
+	if (!set || !s1)
 		return ((char *)s1);
 	cp_s1 = (char *)s1;
 	cp_s1 = ft_firstset(cp_s1, set);
