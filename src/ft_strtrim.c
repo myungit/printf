@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:15:29 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/18 18:57:21 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/18 22:37:29 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*ft_firstset(char *cp_s1, char const *set)
 	i = 0;
 	while (i < ft_strlen(set) && *cp_s1)
 	{
-		while (*cp_s1 == (unsigned char)set[i])
+		while (*cp_s1 == set[i])
 		{
 			cp_s1++;
 			i = 0;
@@ -36,7 +36,7 @@ static int		ft_lastset(char *cp_s1, char const *set, size_t j)
 	i = 0;
 	while (i < ft_strlen(set) && j)
 	{
-		while (cp_s1[j] == (unsigned char)set[i])
+		while (cp_s1[j] == set[i])
 		{
 			j--;
 			i = 0;
@@ -62,7 +62,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	else
 		return (cp_s1);
 	j = ft_lastset(cp_s1, set, j);
-	if (!(result = ft_calloc(1, j + 2)))
+	if (!(result = (char *)ft_calloc(sizeof(char), j + 2)))
 		return (0);
 	i = 0;
 	while (i <= j)

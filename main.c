@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/18 18:28:41 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/18 23:26:44 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,7 +539,25 @@ int		main(void)
 	printf("%s||%s\n", &subme[3], ft_substr(subme, 3, 5));
 	printf("%s||%s\n", &subme[7], ft_substr(subme, 7, ft_strlen(subme)));
 	printf("%s\n", ft_substr(0, 7, ft_strlen(subme)));
-	char *hw = "";
-	char *set = "";
+	char *hw = "안 Đihi how are youdㅇㅓ";
+	char *set = "안 Đdㅇㅓu";
 	printf("strtrim:%s\n", ft_strtrim(hw, set));
+	char splitme[] = "hi how are you";
+	char **result;
+	result = ft_split(splitme, ' ');
+	char *s = "      split       this for   me  !       ";
+	char *s1 = "split  ||this|for|me|||||!|";
+	i = 0;
+	while (result[i])
+	{
+		printf("%s,", result[i++]);
+	}
+	result = ft_split(s, ' ');
+	printf("\n\n");
+	while (*result)
+		printf("%s/", *result++);
+	result = ft_split(s1, '|');
+	printf("\n\n");
+	while (*result)
+		printf("%s,", *result++);
 }
