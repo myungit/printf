@@ -1,0 +1,20 @@
+" **************************************************************************** "
+"                                                                              "
+"                                                         :::      ::::::::    "
+"    .myvimrc                                           :+:      :+:    :+:    "
+"                                                     +:+ +:+         +:+      "
+"    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         "
+"                                                 +#+#+#+#+#+   +#+            "
+"    Created: 2019/11/08 16:35:11 by mpark-ki          #+#    #+#              "
+"    Updated: 2019/11/09 00:19:20 by mpark-ki         ###   ########.fr        "
+"                                                                              "
+" **************************************************************************** "
+
+set nu
+set cursorline
+set history=1000
+set undolevels=1000
+autocmd VimLeave * mksession! ~/.vim/shutdown_session.vim
+noremap <F7> :source ~/.vim/shutdown_session.vim<CR>
+noremap <F5> :mksession! ~/.vim/manual_session.vim<CR>
+noremap <F6> :source ~/.vim/manual_session.vim<CR>
