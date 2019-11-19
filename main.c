@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/18 23:26:44 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:57:53 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -542,16 +542,16 @@ int		main(void)
 	char *hw = "안 Đihi how are youdㅇㅓ";
 	char *set = "안 Đdㅇㅓu";
 	printf("strtrim:%s\n", ft_strtrim(hw, set));
-	char splitme[] = "hi how are you";
+	char splitme[] = "    ";
 	char **result;
 	result = ft_split(splitme, ' ');
-	char *s = "      split       this for   me  !       ";
-	char *s1 = "split  ||this|for|me|||||!|";
 	i = 0;
 	while (result[i])
 	{
-		printf("%s,", result[i++]);
+		printf("splitme:%s\n", result[i++]);
 	}
+	char *s = "      split       this for   me  !       ";
+	char *s1 = "split  ||this|for|me|||||!|";
 	result = ft_split(s, ' ');
 	printf("\n\n");
 	while (*result)
@@ -560,4 +560,15 @@ int		main(void)
 	printf("\n\n");
 	while (*result)
 		printf("%s,", *result++);
+	result = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	while (*result)
+		printf("%s\n", *result++);
+
+	result = ft_split("eaebe eeeeeh\rihife ell\to", '\r');
+	while (*result)
+		printf("%s\n", *result++);
+	int itoame1;
+
+	itoame1 = -2147483647 -1;
+		printf("%s\n", ft_itoa(itoame1));
 }

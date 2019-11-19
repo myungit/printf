@@ -6,7 +6,7 @@
 #    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/08 20:20:34 by mpark-ki          #+#    #+#              #
-#    Updated: 2019/11/18 19:53:36 by mpark-ki         ###   ########.fr        #
+#    Updated: 2019/11/19 18:30:45 by mpark-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
 	   ft_strlcpy.c ft_strlen.c ft_tolower.c ft_toupper.c ft_memchr.c \
 	   ft_memcmp.c ft_strlcat.c ft_strnlen.c ft_strchr.c ft_strrchr.c \
 	   ft_strnstr.c ft_strncmp.c ft_calloc.c ft_strdup.c ft_substr.c \
-	   ft_strjoin.c ft_strtrim.c ft_split.c
+	   ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_power.c ft_strmapi.c
 HEADER = libft.h
 FILES = $(patsubst %, $(SRC_DIR)%, $(OBJS))
 
@@ -30,6 +30,7 @@ all: $(NAME)
 $(NAME): 
 	$(CC) $(CFLAGS) -c $(FILES)
 	ar rc $(NAME) *.o
+	ranlib $(NAME)
 	$(CC) main.c -L. $(NAME)
 
 .PHONY: clean

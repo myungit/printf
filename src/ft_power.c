@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/16 21:22:02 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/19 14:46:37 by mpark-ki         ###   ########.fr       */
+/*   Created: 2019/11/19 16:32:57 by mpark-ki          #+#    #+#             */
+/*   Updated: 2019/11/19 16:48:48 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+size_t	ft_power(size_t num, size_t pow)
 {
-	char	*result;
-	size_t	i;
+	size_t	result;
 
-	if (!s || !(result = (char*)ft_calloc(sizeof(char), len + 1)))
+	result = 1;
+	if (!num)
+		return (num);
+	if (!pow)
 		return (0);
-	i = 0;
-	while (len-- && start <= ft_strlen(s))
-	{
-		result[i++] = s[start++];
-	}
+	if (pow == 0)
+		return (1);
+	while (pow--)
+		result *= num;
 	return (result);
 }
