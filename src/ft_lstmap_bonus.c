@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:28:46 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/21 17:45:21 by mpark-ki         ###   ########.fr       */
+/*   Created: 2019/11/21 20:42:36 by mpark-ki          #+#    #+#             */
+/*   Updated: 2019/11/21 21:39:59 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t need_len;
+	t_list	*newlst;
+	t_list	*newcont;
 
-	need_len = ft_strlen(needle);
-	if (!need_len)
-		return ((char *)haystack);
-	if (need_len > ft_strlen(haystack))
+	if (!lst || !f)
 		return (0);
-	while (*haystack && need_len <= len--)
-		if (ft_strncmp(haystack, needle, need_len))
-			haystack++;
+	newlst = 0;
+	while (lst)
+	{
+		if ((newcont = ft_lstnew((*f)(lst->content))))
+		{
+			ft_lstadd_back(&newlst, newcont);
+			lst = lst->next;
+		}
 		else
-			return ((char *)haystack);
-	return (0);
+		{
+			ft_lstclear(&newlst, del);
+			return (0);
+		}
+	}
+	return (newlst);
 }
