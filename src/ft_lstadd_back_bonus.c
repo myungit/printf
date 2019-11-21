@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 18:55:27 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/21 21:32:51 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/21 21:56:27 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 		return ;
 	}
 	ft_lstlast(*alst)->next = new;
+	new->next = NULL;
 }
