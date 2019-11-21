@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:08:47 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/19 17:57:53 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:05:37 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,6 +539,7 @@ int		main(void)
 	printf("%s||%s\n", &subme[3], ft_substr(subme, 3, 5));
 	printf("%s||%s\n", &subme[7], ft_substr(subme, 7, ft_strlen(subme)));
 	printf("%s\n", ft_substr(0, 7, ft_strlen(subme)));
+	printf("ft_split\n");
 	char *hw = "안 Đihi how are youdㅇㅓ";
 	char *set = "안 Đdㅇㅓu";
 	printf("strtrim:%s\n", ft_strtrim(hw, set));
@@ -569,6 +570,27 @@ int		main(void)
 		printf("%s\n", *result++);
 	int itoame1;
 
+	printf("ft_itoa\n");
 	itoame1 = -2147483647 -1;
-		printf("%s\n", ft_itoa(itoame1));
+	printf("%s\n", ft_itoa(itoame1));
+	char testhi[] = "hello";
+	char *copyme;
+	i = 0;
+	printf("test\n");
+	copyme = ft_calloc(sizeof(char), ft_strlen(testhi) + 1);
+	while (testhi[i])
+	{
+		copyme[i] = testhi[i];
+		i++;
+	}
+	i = 0;
+	while (i)
+		printf("%c", copyme[i--]);
+	printf("%c", copyme[i]);
+
+	ft_putstr_fd("putstr\n", 1);
+	ft_putendl_fd("putendl", 1);
+	ft_putnbr_fd(1234567890, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(-2147483648, 1);
 }
