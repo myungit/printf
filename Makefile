@@ -6,14 +6,13 @@
 #    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 21:42:06 by mpark-ki          #+#    #+#              #
-#    Updated: 2019/11/21 21:44:43 by mpark-ki         ###   ########.fr        #
+#    Updated: 2019/11/22 13:42:35 by mpark-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
 CFLAGS = -Wall -Werror -Wextra
-SRC_DIR = ./src/
 SRC =  		ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
 	   		ft_isascii.c ft_isdigit.c ft_isprint.c ft_isspace.c \
 	   		ft_memccpy.c ft_memcpy.c ft_memmove.c ft_memset.c \
@@ -27,21 +26,19 @@ BONUS_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
-FILES = $(patsubst %, $(SRC_DIR)%, $(SRC))
-BONUS_FILES = $(patsubst %, $(SRC_DIR)%, $(BONUS_SRC))
 SRC_OBJS = $(SRC:.c=.o)
 BONUS_OBJS = $(BONUS_SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): 
-	$(CC) $(CFLAGS) -c $(FILES)
+	$(CC) $(CFLAGS) -c $(SRC)
 	ar rc $@ $(SRC_OBJS)
 	ranlib $@
 
 .PHONY: bonus
 bonus: 
-	$(CC) $(CFLAGS) -c $(FILES) $(BONUS_FILES) 
+	$(CC) $(CFLAGS) -c $(SRC) $(BONUS_SRC) 
 	ar rc $(NAME) $(SRC_OBJS) $(BONUS_OBJS)
 	ranlib $(NAME)
 
