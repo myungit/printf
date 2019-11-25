@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 23:25:33 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/18 22:36:58 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/25 19:33:32 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len;
 
 	if (!s1 || !s2)
-		return (0);
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	if (!(result = (char*)ft_calloc(sizeof(char), len)))
-		return (0);
+		return (NULL);
 	start = result;
 	while (*s1)
 		*result++ = *s1++;

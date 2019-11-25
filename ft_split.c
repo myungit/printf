@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 19:00:50 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/21 16:10:04 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/25 19:33:32 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ static size_t	first_len(char const *s, char c)
 
 static char		**freeme(char **result, size_t k)
 {
-	while (k)
-		free(result[k--]);
-	free(result[k]);
-	return (0);
+	if (result)
+	{
+		while (k)
+			free(result[k--]);
+		if (k == 0 && result[k])
+			free(result[k]);
+	}
+	return (NULL);
 }
 
 static char		**second_len(char const *s, char c, size_t i, char **result)
@@ -68,10 +72,10 @@ char			**ft_split(char const *s, char c)
 {
 	char	**result;
 
-	if (!s || !c)
-		return ((char**)s);
+	if (s == NULL)
+		return (NULL);
 	if (!(result = (char**)ft_calloc(sizeof(char*), (first_len(s, c) + 1))))
-		return (0);
+		return (NULL);
 	second_len(s, c, 0, result);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 15:39:31 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/19 18:07:28 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/25 18:55:17 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*ft_itoa(int n)
 	cp_n = (long int)n;
 	i = ft_count(cp_n);
 	if (!(num = (char*)ft_calloc(sizeof(char), i + 2)))
-		return (0);
+		return (NULL);
 	if (cp_n < 0)
 	{
 		*num++ = '-';
