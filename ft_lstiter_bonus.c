@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 20:37:58 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/21 21:05:11 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:41:54 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)
 	{
-		(*f)(lst->content);
+		f(lst->content);
 		lst = lst->next;
 	}
 }
