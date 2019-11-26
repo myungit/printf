@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 18:45:46 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/22 14:38:25 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/26 13:47:18 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
-		return (lst);
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);

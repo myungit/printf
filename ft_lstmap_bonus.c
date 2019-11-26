@@ -6,12 +6,11 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 20:42:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/22 14:44:45 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/11/26 13:41:24 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -19,9 +18,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*newcont;
 
 	if (!lst || !f)
-		return (0);
-	newlst = 0;
-	while (lst)
+		return (NULL);
+	newlst = NULL;
+	while (lst != NULL)
 	{
 		if ((newcont = ft_lstnew(f(lst->content))))
 		{
