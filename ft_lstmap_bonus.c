@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 20:42:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2019/11/26 13:41:24 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2019/12/01 15:04:53 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*newlst;
 	t_list	*newcont;
 
-	if (!lst || !f)
+	if (!lst || !f || !del)
 		return (NULL);
 	newlst = NULL;
 	while (lst != NULL)
