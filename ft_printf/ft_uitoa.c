@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 15:39:31 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/01/08 19:00:23 by mpark-ki         ###   ########.fr       */
+/*   Created: 2020/01/08 18:37:01 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/12 09:32:52 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int	ft_count(int n)
+static int	ft_count(unsigned int n)
 {
-	int		i;
+	unsigned int	i;
 
 	i = 0;
 	if (n < 0)
@@ -27,13 +27,13 @@ static int	ft_count(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_uitoa(unsigned int n)
 {
-	char		*num;
-	int			i;
-	long int	cp_n;
+	char			*num;
+	unsigned int	i;
+	unsigned int	cp_n;
 
-	cp_n = (long int)n;
+	cp_n = (unsigned int)n;
 	i = ft_count(cp_n);
 	if (!(num = (char*)ft_calloc(sizeof(char), i + 2)))
 		return (NULL);

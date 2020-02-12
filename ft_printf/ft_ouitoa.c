@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ouitoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 15:39:31 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/01/08 19:00:23 by mpark-ki         ###   ########.fr       */
+/*   Created: 2020/01/09 00:24:24 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/12 17:07:50 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int	ft_count(int n)
+static int	ft_count(unsigned int n)
 {
-	int		i;
+	unsigned int	i;
 
 	i = 0;
 	if (n < 0)
@@ -22,12 +22,12 @@ static int	ft_count(int n)
 		n = -n;
 		i++;
 	}
-	while (n /= 10)
+	while (n /= 8)
 		i++;
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_ouitoa(unsigned int n)
 {
 	char		*num;
 	int			i;
@@ -45,10 +45,10 @@ char		*ft_itoa(int n)
 	}
 	while (i)
 	{
-		*num++ = (cp_n / ft_power(10, i) + 48);
-		cp_n -= (cp_n / ft_power(10, i) * ft_power(10, i));
+		*num++ = (cp_n / ft_power(8, i) + 48);
+		cp_n -= (cp_n / ft_power(8, i) * ft_power(8, i));
 		i--;
 	}
-	*num = cp_n % 10 + 48;
+	*num = cp_n % 8 + 48;
 	return (num - ft_count(n));
 }

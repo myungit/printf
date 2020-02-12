@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 15:39:31 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/01/08 19:00:23 by mpark-ki         ###   ########.fr       */
+/*   Created: 2020/01/09 03:07:38 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/12 08:56:06 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int	ft_count(int n)
+static int	ft_count(long int n)
 {
-	int		i;
+	long int	i;
 
 	i = 0;
 	if (n < 0)
@@ -27,10 +27,10 @@ static int	ft_count(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_ltoa(long int n)
 {
 	char		*num;
-	int			i;
+	long int	i;
 	long int	cp_n;
 
 	cp_n = (long int)n;
