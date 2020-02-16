@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 17:25:26 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/12 19:05:03 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/16 20:24:33 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		main(void)
 	z = -4294967295;
 	y = 4294967295;
 
-	while (z <= 4294967295)
+	if (z <= 4294967295)
 	{
 		if (ft_printf("Hola %d %d\n", (int)z, (int)y)
 				!= printf("Hola %d %d\n", (int)z, (int)y))
@@ -68,15 +68,12 @@ int		main(void)
 		}
 		z++;
 	}
-	/*
 	if (ft_printf("Hola %%\n")
 			!= printf("Hola %%\n"))
 	{
 		printf("[FAIL] with %%");
 		w++;
 	}
-	*/
-	/*
 	z = -4294967295;
 	while (z <= 4294967295)
 	{
@@ -166,7 +163,6 @@ int		main(void)
 		printf("[FAIL] with %%f or %%F at i = %f\n", sqrt(-2));
 		f++;
 	}
-	*/
 	z = 0;
 	while (ss[z])
 	{

@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 01:20:20 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/12 08:56:06 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/16 22:19:14 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*ft_decimal(long long int cp_n, int i)
 	return (start);
 }
 
-char	*ft_joinall(char *before, char *after, int sign)
+char		*ft_joinall(char *before, char *after, int sign)
 {
 	char	*before_tmp;
 	char	*tmp;
@@ -64,7 +64,7 @@ char	*ft_joinall(char *before, char *after, int sign)
 	free(after);
 	return (result);
 }
-#include <stdio.h>
+
 char		*ft_ftoa(float n)
 {
 	char		*decimal;
