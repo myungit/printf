@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:27 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/16 22:18:49 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/17 20:34:11 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct	s_printf
 {
 	char				*flags;
 	int					width;
-	int					precision;
+	int					prec;
 	char				specif;
 }				t_printf;
 int				ft_printf(const char *format, ...);
-char			*ft_flags(char *flags, int width, char specif, char *value);
+char		*ft_flags(t_printf *prototyp, char *value);
 #endif

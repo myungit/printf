@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 12:52:28 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/12 12:54:45 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/17 18:36:54 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ char	*ft_allcaps(char *str)
 
 	start = str;
 	while (*str)
-		ft_toupper(*str++);
+	{
+		*str = ft_toupper(*str);
+		str++;
+	}
 	return (start);
 }

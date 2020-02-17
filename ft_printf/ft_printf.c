@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/16 22:20:15 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/17 20:36:43 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_printf *ft_init_prot(void)
 	{
 		tmp->flags = ft_strdup("");
 		tmp->width = 0;
-		tmp->precision = 0;
+		tmp->prec= -1;
 		tmp->specif = 1;
 	}
 	return (tmp);
@@ -84,7 +84,7 @@ int				ft_printf(const char *format, ...)
 			{
 				format++;
 				if (ft_isdigit(*format) || *format == '*')
-					prototyp->precision = (*format == '*') ?
+					prototyp->prec= (*format == '*') ?
 						(va_arg(args, int)) : ft_atoi(format);
 				while (ft_isdigit(*format) || *format == '*')
 					format++;
@@ -149,7 +149,7 @@ int				ft_printf(const char *format, ...)
 			}
 			else if (prototyp->specif == 's')
 			{
-				value = va_arg(args, char*);
+				value = ft_strdup(va_arg(args, char*));
 			}
 			else if (prototyp->specif == '%')
 			{
@@ -157,7 +157,7 @@ int				ft_printf(const char *format, ...)
 			}
 			if (prototyp->specif != 'c')
 				result += ft_strlen(value);
-			tmp = ft_flags(prototyp->flags, prototyp->width, prototyp->specif, value);
+			tmp = ft_flags(prototyp, value);
 			ft_putstr_fd(tmp, 1);
 			free(tmp);
 			/*
