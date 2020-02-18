@@ -6,7 +6,7 @@
 #    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 09:04:35 by mpark-ki          #+#    #+#              #
-#    Updated: 2020/02/12 13:05:25 by mpark-ki         ###   ########.fr        #
+#    Updated: 2020/02/18 11:15:32 by mpark-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 NAME = libftprintf.a
 CFLAGS = -Wall -Werror -Wextra
 SRC =  		ft_ftoa.c ft_ltoa.c ft_uitoa.c ft_xitoa.c ft_ouitoa.c \
-			ft_printf_format.c ft_printf.c
+			ft_printf_format.c ft_save_fwp.c ft_printf.c
 
 SRC_OBJS = $(SRC:.c=.o)
 

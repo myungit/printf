@@ -6,167 +6,91 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/17 20:36:43 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:17:21 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
 #include "ft_printf.h"
 
-static t_printf *ft_init_prot(void)
+static void		diuoxfp(char specif, va_list args, char **value)
 {
-	t_printf	*tmp;
+	char	*tmp;
 
-	if ((tmp = (t_printf *)malloc(sizeof(t_printf))))
+	if (specif == 'd' || specif == 'i')
+		*value = ft_itoa(va_arg(args, int));
+	else if (specif == 'u')
+		*value = ft_uitoa(va_arg(args, unsigned int));
+	else if (specif == 'o')
+		*value = ft_ouitoa(va_arg(args, unsigned int));
+	else if (specif == 'x' || specif == 'X')
+		*value = (specif == 'X') ?
+			ft_allcaps(ft_xitoa(va_arg(args, unsigned int))) :
+			ft_xitoa(va_arg(args, unsigned int));
+	else if (specif == 'f' || specif == 'F')
+		*value = ((specif == 'F') ?
+				ft_allcaps(ft_ftoa(va_arg(args, double))) :
+				ft_ftoa(va_arg(args, double)));
+	else if (specif == 'p')
 	{
-		tmp->flags = ft_strdup("");
-		tmp->width = 0;
-		tmp->prec= -1;
-		tmp->specif = 1;
+		tmp = ft_xitoa(va_arg(args, unsigned long int));
+		*value = ft_strjoin("0x", tmp);
+		free(tmp);
 	}
-	return (tmp);
 }
-#include <stdio.h>
-static char		*save_flags(char *flags, const char *format)
-{
-	int		i;
-	char	*result;
-	char	*start;
 
-	i = 0;
-	free(flags);
-	while ((format[i] == '-' || format[i] == '+' ||
-			format[i] == ' ' || format[i] == '#' ||
-			format[i] == '0'))
-		i++;
-	result = (char*)ft_calloc(sizeof(char), i + 1);
-	start = result;
-	while (*format == '-' || *format == '+' ||
-			*format == ' ' || *format == '#' ||
-			*format == '0')
-		*result++ = *format++;
-	return (start);
+static char		*save_value(char specif, va_list args)
+{
+	char	*value;
+
+	diuoxfp(specif, args, &value);
+	if (specif == 'e' || specif == 'E')
+		exit(1);
+	else if (specif == 'n')
+		exit(1);
+	else if (specif == 'c')
+	{
+		value = (char*)ft_calloc(sizeof(char), 2);
+		*value = va_arg(args, int);
+	}
+	else if (specif == 's')
+		value = ft_strdup(va_arg(args, char*));
+	else if (specif == '%')
+		value = ft_strdup("%");
+	return (value);
 }
+
 int				ft_printf(const char *format, ...)
 {
-	va_list		args;
-	char		*value;
-	char		*tmp;
-	int			result;
-	int			i;
+	va_list			args;
+	char			*value;
+	char			*tmp;
+	int				result;
 	t_printf		*prototyp;
 
 	va_start(args, format);
 	result = 0;
-	i = 0;
-
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			prototyp = ft_init_prot();
-			format++;
-			if (*format == '-' || *format == '+' ||
-					*format == ' ' || *format == '#' ||
-					*format == '0')
-			{
-				prototyp->flags = save_flags(prototyp->flags, format);
-				format += ft_strlen(prototyp->flags);
-			}
-			if (ft_isdigit(*format) || *format == '*')
-			{
-				prototyp->width = (*format == '*') ?
-					(va_arg(args, int)) : ft_atoi(format);
-				while (ft_isdigit(*format) || *format == '*')
-					format++;
-			}
-			if (*format == '.')
-			{
-				format++;
-				if (ft_isdigit(*format) || *format == '*')
-					prototyp->prec= (*format == '*') ?
-						(va_arg(args, int)) : ft_atoi(format);
-				while (ft_isdigit(*format) || *format == '*')
-					format++;
-			}
+			ft_save_fwp(&prototyp, &format, args);
 			if (*format == 'd' || *format == 'i' || *format == 'u' ||
 					*format == 'o' || *format == 'x' || *format == 'X' ||
 					*format == 'f' || *format == 'F' || *format == 'e' ||
 					*format == 'c' || *format == 's' || *format == 'p' ||
 					*format == 'n' || *format == '%')
+			{
 				prototyp->specif = *format;
-
-			if (prototyp->specif == 'd' || prototyp->specif == 'i')
-			{
-				value = ft_itoa(va_arg(args, int));
-			}
-			else if (prototyp->specif == 'u')
-			{
-				value = ft_uitoa(va_arg(args, unsigned int));
-			}
-			else if (prototyp->specif == 'o')
-			{
-				value = ft_ouitoa(va_arg(args, unsigned int));
-			}
-			else if (prototyp->specif == 'x' || prototyp->specif == 'X')
-			{
-				value = (prototyp->specif == 'X') ?
-					ft_allcaps(ft_xitoa(va_arg(args, unsigned int))) :
-					ft_xitoa(va_arg(args, unsigned int));
-			}
-			else if (prototyp->specif == 'f' || prototyp->specif == 'F')
-			{
-				value = ((prototyp->specif == 'F') ?
-					ft_allcaps(ft_ftoa(va_arg(args, double))) :
-					ft_ftoa(va_arg(args, double)));
-				/*
-				value = ft_ftoa(va_arg(args, double));
-				  if (prototyp->specif == 'F')
-				  ft_putstr_fd(ft_allcaps(value), 1);
-				  else
-				  ft_putstr_fd(value, 1);
-				  */
-			}
-			else if (prototyp->specif == 'p')
-			{
-				tmp = ft_xitoa(va_arg(args, unsigned long int));
-				value = ft_strjoin("0x", tmp);
+				value = save_value(prototyp->specif, args);
+				if (prototyp->specif != 'c')
+					result += ft_strlen(value);
+				else
+					result++;
+				tmp = ft_flags(&prototyp, value);
+				ft_putstr_fd(tmp, 1);
 				free(tmp);
 			}
-			else if (prototyp->specif == 'e' || prototyp->specif == 'E')
-			{
-				exit(1);
-			}
-			else if (prototyp->specif == 'n')
-			{
-				exit(1);
-			}
-			else if (prototyp->specif == 'c')
-			{
-				value = (char*)ft_calloc(sizeof(char), 2);
-				*value = va_arg(args, int);
-				result++;
-			}
-			else if (prototyp->specif == 's')
-			{
-				value = ft_strdup(va_arg(args, char*));
-			}
-			else if (prototyp->specif == '%')
-			{
-				value = ft_strdup("%");
-			}
-			if (prototyp->specif != 'c')
-				result += ft_strlen(value);
-			tmp = ft_flags(prototyp, value);
-			ft_putstr_fd(tmp, 1);
-			free(tmp);
-			/*
-			if (prototyp->specif == 'd' || prototyp->specif == 'i' || prototyp->specif == 'u' ||
-					prototyp->specif == 'o' || prototyp->specif == 'x' || prototyp->specif == 'X' ||
-					prototyp->specif == 'f' || prototyp->specif == 'F' || prototyp->specif == 'p') 
-				free(value);
-				*/
-			free(prototyp);
+			ft_free(2, prototyp->flags, prototyp);
 		}
 		else
 		{

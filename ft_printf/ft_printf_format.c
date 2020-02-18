@@ -6,12 +6,11 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:50:39 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/17 20:38:56 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 10:48:57 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void		ft_checksign(char *flags, char specif, char **value, int *len)
 {
@@ -75,11 +74,12 @@ static char		*ft_prec(int prec, char specif, char *value)
 	char	*tmp;
 	int		len;
 
-	if (prec != -1)
+	tmp = value;
+	if (specif == 's' || ((len = prec - ft_strlen(value)) > 0))
 	{
 		if (specif == 's')
-			tmp = ft_substr(value, 0, prec);
-		if ((len = prec - ft_strlen(value)) > 0)
+			tmp = (ft_substr(value, 0, prec));
+		else
 		{
 			if (specif == 'd' || specif == 'i' || specif == 'o' ||
 					specif == 'u' || specif == 'x' || specif == 'X')
@@ -89,9 +89,9 @@ static char		*ft_prec(int prec, char specif, char *value)
 				tmp = ft_strjoin(fill_it, value);
 				free(fill_it);
 			}
-			/* else if (specif == 'a' || specif == 'A' || specif == 'e' ||*/
-			/* specif == 'f' || specif == 'F')*/
-			/* else if (specif == 'g' || specif == 'G')*/
+			/* else if (specif == 'a' || specif == 'A' || specif == 'e' ||
+			   specif == 'E' || specif == 'f' || specif == 'F')
+			   else if (specif == 'g' || specif == 'G')*/
 		}
 		free(value);
 		value = tmp;
@@ -99,31 +99,30 @@ static char		*ft_prec(int prec, char specif, char *value)
 	return (value);
 }
 
-char			*ft_flags(t_printf *prototyp, char *value)
+char			*ft_flags(t_printf **prototyp, char *value)
 {
 	char	*fill_it;
 	char	with_this;
 	char	*result;
 	int		len;
 
-	len = prototyp->width - ft_strlen(value);
-	ft_checksign(prototyp->flags, prototyp->specif, &value, &len);
+	value = (ft_prec((*prototyp)->prec, (*prototyp)->specif, value));
+	len = (*prototyp)->width - ft_strlen(value);
+	ft_checksign((*prototyp)->flags, (*prototyp)->specif, &value, &len);
 	if (len > 0)
 	{
 		fill_it = (char*)ft_calloc(sizeof(char), len + 1);
-		with_this = ft_strchr(prototyp->flags, '0') ? '0' : ' ';
+		with_this = ft_strchr((*prototyp)->flags, '0') ? '0' : ' ';
 		ft_memset(fill_it, with_this, len);
-		if (ft_strchr(prototyp->flags, '-'))
+		if (ft_strchr((*prototyp)->flags, '-'))
 			result = ft_strjoin(value, fill_it);
 		else
 		{
 			ft_fix_sign(&value, &fill_it, with_this);
 			result = ft_strjoin(fill_it, value);
 		}
-		free(value);
-		free(fill_it);
+		ft_free(2, value, fill_it);
 		value = result;
 	}
-	free(prototyp->flags);
-	return (ft_prec(prototyp->prec, prototyp->specif, value));
+	return (value);
 }

@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 17:02:16 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/17 20:37:02 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 10:49:52 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ int		main(void)
 	ptr->x = 12;
 	a = e_list_val3;
 	*/
-	/*
-	printf("%d\n", 123);
-	printf("%-d\n", 123);
-	printf("%-4d\n", 123);
+
 	ft_printf("1:%+10d\n", 123);
 	printf("2:%+10d\n", 123);
 	ft_printf("1:%---++---5d\n", 123);
 	printf("2:%---++---5d\n", 123);
+	/*
 	ft_printf("1:%0+005d\n", 123);
 	printf("2:%0+005d\n", 123);
 	ft_printf("1:%0005d\n", 123);
@@ -128,19 +126,31 @@ int		main(void)
 	printf("%10%\n");
 	ft_printf("%-10%\n");
 	printf("%-10%\n");
-	*/
 
 	char hi[] = "tests";
-	ft_printf("2:%s\n", ft_allcaps(hi));
-	printf("1:%s\n", ft_allcaps(hi));
-	ft_printf("2:%.0s\n", ft_allcaps(hi));
-	printf("1:%.0s\n", ft_allcaps(hi));
-	ft_printf("2:%.2s\n", ft_allcaps(hi));
-	printf("1:%.2s\n", ft_allcaps(hi));
-	printf("1:%05.6d\n", 124);
-	ft_printf("2:%05.6d\n", 124);
-	printf("1:%-.5d\n", 123);
-	ft_printf("2:%-.5d\n", 123);
+	ft_printf("2:%s.\n", ft_allcaps(hi));
+	printf("1:%s.\n", ft_allcaps(hi));
+	ft_printf("2:%.0s.\n", ft_allcaps(hi));
+	printf("1:%.0s.\n", ft_allcaps(hi));
+	ft_printf("2:%.2s.\n", ft_allcaps(hi));
+	printf("1:%.2s.\n", ft_allcaps(hi));
+	printf("1:%05.6d.\n", 124);
+	ft_printf("2:%05.6d.\n", 124);
+	printf("1:%-.5d.\n", 123);
+	ft_printf("2:%-.5d.\n", 123);
+	printf("1:%-5.5d.\n", 125);
+	ft_printf("2:%-5.5d.\n", 125);
+	printf("1:%5.5d.\n", 125);
+	ft_printf("2:%5.5d.\n", 125);
+	printf("1:%-7.5d.\n", 126);
+	ft_printf("2:%-7.5d.\n", 126);
+	printf("1:%7.5d.\n", 127);
+	ft_printf("2:%7.5d.\n", 127);
+	printf("1:%7.0d.\n", 128);
+	ft_printf("2:%7.0d.\n", 128);
+	printf("1:%-7..5d.\n", 126);
+	ft_printf("2:%-7..5d.\n", 126);
+	*/
 	system("leaks a.out");
 	/*
 	printf("%-4.0d\n", 123);

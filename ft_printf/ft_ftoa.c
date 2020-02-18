@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 01:20:20 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/16 22:19:14 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 10:29:13 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ char		*ft_joinall(char *before, char *after, int sign)
 	else
 		before_tmp = before;
 	tmp = ft_strjoin(before_tmp, ".");
-	free(before_tmp);
 	result = ft_strjoin(tmp, after);
-	free(tmp);
-	free(after);
+	ft_free(3, before_tmp, tmp, after);
 	return (result);
 }
 
@@ -82,16 +80,12 @@ char		*ft_ftoa(float n)
 			n = -n;
 			sign = 1;
 		}
-		//printf("second: %f\n", n);
-		//printf("third: %f\n", n * ft_power(10, 6) - (long int)n * ft_power(10, 6));
 		//cp_n = (n * (ft_power(10, 6))) - (((long int)n) * ft_power(10, 6));
 		cp_n = n * ft_power(10, 6) - (long int)n * (ft_power(10, 6));
 		if ((((long int)(n * ft_power(10, 7))) % 10) >= 5)
 			cp_n++;
 		before = ft_ltoa(n);
 		decimal = ft_decimal(cp_n, 5);
-		//printf("cp_n:%ld\n", cp_n);
-		//printf("before:%s\nafter:%s\n", before, decimal);
 		result = ft_joinall(before, decimal, sign);
 	}
 	return (result);
