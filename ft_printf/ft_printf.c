@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 11:17:21 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:27:37 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,39 +59,45 @@ static char		*save_value(char specif, va_list args)
 	return (value);
 }
 
+static int		convert_all(const char **format,
+		va_list args, int result)
+{
+	char		*tmp;
+	char		*value;
+	t_printf	*prototyp;
+
+	ft_save_fwp(&prototyp, &(*format), args);
+	if (**format == 'd' || **format == 'i' || **format == 'u' ||
+			**format == 'o' || **format == 'x' || **format == 'X' ||
+			**format == 'f' || **format == 'F' || **format == 'e' ||
+			**format == 'c' || **format == 's' || **format == 'p' ||
+			**format == 'n' || **format == '%')
+	{
+		prototyp->specif = **format;
+		value = save_value(prototyp->specif, args);
+		if (prototyp->specif != 'c')
+			result += ft_strlen(value);
+		else
+			result++;
+		tmp = ft_flags(&prototyp, value);
+		ft_putstr_fd(tmp, 1);
+		free(tmp);
+	}
+	ft_free(2, prototyp->flags, prototyp);
+	return (result);
+}
+
 int				ft_printf(const char *format, ...)
 {
 	va_list			args;
-	char			*value;
-	char			*tmp;
 	int				result;
-	t_printf		*prototyp;
 
 	va_start(args, format);
 	result = 0;
 	while (*format)
 	{
 		if (*format == '%')
-		{
-			ft_save_fwp(&prototyp, &format, args);
-			if (*format == 'd' || *format == 'i' || *format == 'u' ||
-					*format == 'o' || *format == 'x' || *format == 'X' ||
-					*format == 'f' || *format == 'F' || *format == 'e' ||
-					*format == 'c' || *format == 's' || *format == 'p' ||
-					*format == 'n' || *format == '%')
-			{
-				prototyp->specif = *format;
-				value = save_value(prototyp->specif, args);
-				if (prototyp->specif != 'c')
-					result += ft_strlen(value);
-				else
-					result++;
-				tmp = ft_flags(&prototyp, value);
-				ft_putstr_fd(tmp, 1);
-				free(tmp);
-			}
-			ft_free(2, prototyp->flags, prototyp);
-		}
+			result = convert_all(&format, args, result);
 		else
 		{
 			ft_putchar_fd((char)*format, 1);

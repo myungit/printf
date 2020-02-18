@@ -6,13 +6,13 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 17:25:26 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/16 20:24:33 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:37:41 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <math.h>
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int		main(void)
 {

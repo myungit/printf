@@ -6,11 +6,11 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 17:02:16 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 10:49:52 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:37:52 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 enum			e_list
 {
@@ -47,7 +47,6 @@ int		main(void)
 	printf("2:%+10d\n", 123);
 	ft_printf("1:%---++---5d\n", 123);
 	printf("2:%---++---5d\n", 123);
-	/*
 	ft_printf("1:%0+005d\n", 123);
 	printf("2:%0+005d\n", 123);
 	ft_printf("1:%0005d\n", 123);
@@ -150,7 +149,6 @@ int		main(void)
 	ft_printf("2:%7.0d.\n", 128);
 	printf("1:%-7..5d.\n", 126);
 	ft_printf("2:%-7..5d.\n", 126);
-	*/
 	system("leaks a.out");
 	/*
 	printf("%-4.0d\n", 123);
