@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:10:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 11:18:15 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:57:40 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static t_printf	*ft_init_prot(const char **format)
 		tmp->flags = ft_strdup("");
 		tmp->width = 0;
 		tmp->prec = -1;
-		tmp->specif = 1;
+		tmp->specif = 0;
 	}
+	if (ft_strlen(*format) > 1)
 	(*format)++;
 	return (tmp);
 }
@@ -48,6 +49,30 @@ static char		*save_flags(char *flags, const char *format)
 	return (start);
 }
 
+static void		ft_save_prec(t_printf **prototyp, const char **format,
+				va_list args)
+{
+	while (**format == '.')
+	{
+		(*format)++;
+		if (ft_isdigit(**format) || **format == '*')
+			(*prototyp)->prec = (**format == '*') ?
+				(va_arg(args, int)) : ft_positiv(ft_atoi(*format));
+		else
+			(*prototyp)->prec = 0;
+		while (ft_isdigit(**format) || **format == '*')
+			(*format)++;
+	}
+}
+static char		*ft_addb(char *str, char *c)
+{
+	char	*tmp;
+	
+	tmp = ft_strjoin(str, c);
+	free(str);
+	return (tmp);
+}
+
 void			ft_save_fwp(t_printf **prototyp, const char **format,
 				va_list args)
 {
@@ -62,17 +87,14 @@ void			ft_save_fwp(t_printf **prototyp, const char **format,
 	if (ft_isdigit(**format) || **format == '*')
 	{
 		(*prototyp)->width = (**format == '*') ?
-			(va_arg(args, int)) : ft_atoi(*format);
+			(va_arg(args, int)) : ft_positiv(ft_atoi(*format));
+		if ((*prototyp)->width < 0)
+		{
+			(*prototyp)->flags = ft_addb(((*prototyp)->flags), "-");
+			(*prototyp)->width *= -1;
+		}
 		while (ft_isdigit(**format) || **format == '*')
 			(*format)++;
 	}
-	while (**format == '.')
-	{
-		(*format)++;
-		if (ft_isdigit(**format) || **format == '*')
-			(*prototyp)->prec = (**format == '*') ?
-				(va_arg(args, int)) : ft_atoi(*format);
-		while (ft_isdigit(**format) || **format == '*')
-			(*format)++;
-	}
+	ft_save_prec(&(*prototyp), &(*format), args);
 }

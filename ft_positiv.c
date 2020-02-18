@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_positiv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 11:27:21 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 13:14:20 by mpark-ki         ###   ########.fr       */
+/*   Created: 2020/02/18 13:02:46 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/18 13:04:05 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *str)
+int		ft_positiv(int num)
 {
-	size_t i;
-
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-			i++;
-	}
-	return (i);
+	if (num < 0)
+		num = -num;
+	return (num);
 }

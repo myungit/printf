@@ -6,11 +6,12 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 11:27:37 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:51:14 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static void		diuoxfp(char specif, va_list args, char **value)
 {
@@ -53,7 +54,11 @@ static char		*save_value(char specif, va_list args)
 		*value = va_arg(args, int);
 	}
 	else if (specif == 's')
-		value = ft_strdup(va_arg(args, char*));
+	{
+		value = va_arg(args, char*);
+		value = (value == NULL) ? ft_strdup("(null)") :
+				ft_strdup(value);
+	}
 	else if (specif == '%')
 		value = ft_strdup("%");
 	return (value);
@@ -75,15 +80,15 @@ static int		convert_all(const char **format,
 	{
 		prototyp->specif = **format;
 		value = save_value(prototyp->specif, args);
+		tmp = ft_flags(&prototyp, value);
 		if (prototyp->specif != 'c')
-			result += ft_strlen(value);
+			result += ft_strlen(tmp);
 		else
 			result++;
-		tmp = ft_flags(&prototyp, value);
 		ft_putstr_fd(tmp, 1);
 		free(tmp);
+		ft_free(2, prototyp->flags, prototyp);
 	}
-	ft_free(2, prototyp->flags, prototyp);
 	return (result);
 }
 

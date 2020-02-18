@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 20:43:59 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 09:53:08 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 13:03:39 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 char			*ft_allcaps(char *str);
 int				ft_iscaps(int c);
 void			ft_free(int i, ...);
+int				ft_positiv(int num);
 
 #endif

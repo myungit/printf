@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 00:39:11 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/12 09:33:19 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:31:17 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ char		*ft_xitoa(unsigned long int n)
 	i = ft_count(cp_n);
 	if (!(num = (char*)ft_calloc(sizeof(char), i + 2)))
 		return (NULL);
-	if (cp_n < 0)
-		i--;
 	while (i)
 	{
 		*num = (cp_n / ft_power(16, i) + 48);

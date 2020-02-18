@@ -6,11 +6,12 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:50:39 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 11:30:46 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:39:03 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static void		ft_checksign(char *flags, char specif, char **value, int *len)
 {
@@ -41,6 +42,13 @@ static void		ft_checksign(char *flags, char specif, char **value, int *len)
 	}
 }
 
+static int		ft_ishex(char *str)
+{
+	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
+		return (1);
+	return (0);
+}
+
 static void		ft_fix_sign(char **value, char **fill_it, char with_this)
 {
 	char	*tmp;
@@ -52,8 +60,9 @@ static void		ft_fix_sign(char **value, char **fill_it, char with_this)
 			**fill_it = **value;
 			**value = with_this;
 		}
-		else if (**value == '0'
-				&& (*(*value + 1) == 'x' || *(*value + 1) == 'X'))
+		//else if (**value == '0'
+		//		&& (*(*value + 1) == 'x' || *(*value + 1) == 'X'))
+		else if (ft_ishex(*value))
 		{
 			*(*fill_it + 1) = *(*value + 1);
 			*(*value + 1) = with_this;
@@ -75,17 +84,25 @@ static char		*ft_prec(int prec, char specif, char *value)
 	int		len;
 
 	tmp = value;
-	if (specif == 's' || ((len = prec - ft_strlen(value)) > 0))
+	if (prec == 0) 
+	{
+		free(value);
+		value = (specif == 'p') ? ft_strdup("0x") : ft_strdup("");
+	}
+	else if ((specif == 's' || ((len = prec - ft_strlen(value)) > 0)) && prec >= 0)
 	{
 		if (specif == 's')
 			tmp = (ft_substr(value, 0, prec));
 		else
 		{
 			if (specif == 'd' || specif == 'i' || specif == 'o' ||
-					specif == 'u' || specif == 'x' || specif == 'X')
+					specif == 'u' || specif == 'x' || specif == 'X' || specif == 'p')
 			{
 				fill_it = (char*)ft_calloc(sizeof(char), len + 1);
+				(*value == '-') ? len++ : len;
+				ft_ishex(value) ? len += 2 : len;
 				ft_memset(fill_it, '0', len);
+				ft_fix_sign(&value, &fill_it, '0');
 				tmp = ft_strjoin(fill_it, value);
 				free(fill_it);
 			}
@@ -112,7 +129,14 @@ char			*ft_flags(t_printf **prototyp, char *value)
 	if (len > 0)
 	{
 		fill_it = (char*)ft_calloc(sizeof(char), len + 1);
-		with_this = ft_strchr((*prototyp)->flags, '0') ? '0' : ' ';
+		/*if (ft_strchr((*prototyp)->flags, '0') && ((*prototyp)->prec == -1))
+			with_this = '0';
+		else
+			with_this = ' ';
+			*/
+		with_this = (ft_strchr((*prototyp)->flags, '0') &&
+					(*prototyp)->prec == -1)  && (!(ft_strchr((*prototyp)->flags, '-')))
+					? '0' : ' ';
 		ft_memset(fill_it, with_this, len);
 		if (ft_strchr((*prototyp)->flags, '-'))
 			result = ft_strjoin(value, fill_it);
