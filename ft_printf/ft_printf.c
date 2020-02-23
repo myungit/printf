@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 15:51:14 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/23 20:15:40 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,53 +39,75 @@ static void		diuoxfp(char specif, va_list args, char **value)
 	}
 }
 
-static char		*save_value(char specif, va_list args)
+static char		*save_value(char spec, va_list args)
 {
 	char	*value;
 
-	diuoxfp(specif, args, &value);
-	if (specif == 'e' || specif == 'E')
+	diuoxfp(spec, args, &value);
+	if (spec == 'e' || spec == 'E')
 		exit(1);
-	else if (specif == 'n')
+	else if (spec == 'n')
 		exit(1);
-	else if (specif == 'c')
+	else if (spec == 'c')
 	{
 		value = (char*)ft_calloc(sizeof(char), 2);
 		*value = va_arg(args, int);
 	}
-	else if (specif == 's')
+	else if (spec == 's')
 	{
 		value = va_arg(args, char*);
 		value = (value == NULL) ? ft_strdup("(null)") :
 				ft_strdup(value);
 	}
-	else if (specif == '%')
+	else if (spec == '%')
 		value = ft_strdup("%");
 	return (value);
+}
+
+static void		ft_printstr(char specif, char *str, int len)
+{
+	/*
+	int i;
+
+	i = 0;
+	if (specif == 'c')
+	{
+		len--;
+		while (str[i] || len--)
+		{
+			write(1, &(str[i]), 1);
+			str++;
+		}
+	}
+	else
+	*/
+	if (specif && len)
+		ft_putstr_fd(str, 1);
 }
 
 static int		convert_all(const char **format,
 		va_list args, int result)
 {
 	char		*tmp;
-	char		*value;
 	t_printf	*prototyp;
 
 	ft_save_fwp(&prototyp, &(*format), args);
-	if (**format == 'd' || **format == 'i' || **format == 'u' ||
+	if (format && (**format == 'd' || **format == 'i' || **format == 'u' ||
 			**format == 'o' || **format == 'x' || **format == 'X' ||
 			**format == 'f' || **format == 'F' || **format == 'e' ||
 			**format == 'c' || **format == 's' || **format == 'p' ||
-			**format == 'n' || **format == '%')
+			**format == 'n' || **format == '%'))
 	{
 		prototyp->specif = **format;
-		value = save_value(prototyp->specif, args);
-		tmp = ft_flags(&prototyp, value);
-		if (prototyp->specif != 'c')
+		prototyp->value = save_value(prototyp->specif, args);
+		tmp = ft_flags(&prototyp, prototyp->value);
+		if (prototyp->specif != 'c' && prototyp->specif != 0)
 			result += ft_strlen(tmp);
+		else if (prototyp->width)
+			result += prototyp->width;
 		else
 			result++;
-		ft_putstr_fd(tmp, 1);
+		ft_printstr(prototyp->specif, tmp, result);
 		free(tmp);
 		ft_free(2, prototyp->flags, prototyp);
 	}

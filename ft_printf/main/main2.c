@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 17:02:16 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 15:47:36 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/23 18:31:20 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,14 +187,22 @@ int		main(void)
 	printf("6:%p\n", NULL);
 	ft_printf("5:%p\n", 0);
 	printf("6:%p\n", 0);
-	*/
 
-	ft_printf("%");
-	printf("%");
+		int i;
+	int j;
+	i = printf("orig:%5\n");
+	printf("orig i:%d\n", i);
+	j = ft_printf("orig:%5\n");
+	ft_printf("my j:%d\n", j);
+	*/
+	printf("orig:%c",0);
+	ft_printf("my:%c", 0);
+	/*
 	ft_printf("%5");
 	printf("%5");
 	ft_printf("%05");
 	printf("%05");
+	*/
 	/*
 	ft_printf("5:%2.9p\n", 1234);
 	printf("6:%2.9p\n", 1234);

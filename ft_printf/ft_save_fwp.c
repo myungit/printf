@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:10:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 15:57:40 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/23 20:15:40 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static t_printf	*ft_init_prot(const char **format)
 		tmp->width = 0;
 		tmp->prec = -1;
 		tmp->specif = 0;
+		tmp->value = "";
 	}
 	if (ft_strlen(*format) > 1)
-	(*format)++;
+		(*format)++;
 	return (tmp);
 }
 
