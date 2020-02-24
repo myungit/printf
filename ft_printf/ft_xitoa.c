@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 00:39:11 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 14:31:17 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/24 20:42:25 by myntcake         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ static int	ft_count(unsigned long int n)
 	unsigned long int	i;
 
 	i = 0;
-	if (n < 0)
-	{
-		n = -n;
-		i++;
-	}
 	while (n /= 16)
 		i++;
 	return (i);
