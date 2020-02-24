@@ -6,7 +6,7 @@
 /*   By: myntcake <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 21:50:46 by myntcake          #+#    #+#             */
-/*   Updated: 2020/02/24 21:53:01 by myntcake         ###   ########.fr       */
+/*   Updated: 2020/02/24 23:25:47 by myntcake         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_isflag(char c)
 				c == '0'));
 }
 
-int		ft_iswp(char c)
+int		ft_is_num_asterisk(char c)
 {
 	return ((ft_isdigit(c) || c == '*'));
 }
