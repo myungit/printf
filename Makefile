@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/11/21 21:42:06 by mpark-ki          #+#    #+#              #
-#    Updated: 2020/02/18 13:03:46 by mpark-ki         ###   ########.fr        #
+#    Created: 2020/02/26 00:41:10 by mpark-ki          #+#    #+#              #
+#    Updated: 2020/02/26 00:41:12 by mpark-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC =  		ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
 	   		ft_strnstr.c ft_strncmp.c ft_calloc.c ft_strdup.c ft_substr.c \
 	   		ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_power.c ft_strmapi.c \
 	   		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_allcaps.c ft_iscaps.c ft_free.c ft_positiv.c
+			ft_allcaps.c ft_iscaps.c ft_free.c ft_positiv.c ft_putchar.c \
+			ft_putstr.c
 
 BONUS_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:50:39 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/23 20:15:40 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/26 00:35:10 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ static void		ft_checksign(char *flags, char specif, char **value, int *len)
 
 static int		ft_ishex(char *str)
 {
-	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
-		return (1);
-	return (0);
+	if (ft_strlen(str) >= 2)
+		return (str[0] == '0' && ft_isx(str[1]));
 }
 
 static void		ft_fix_sign(char **value, char **fill_it, char with_this)
@@ -60,8 +59,6 @@ static void		ft_fix_sign(char **value, char **fill_it, char with_this)
 			**fill_it = **value;
 			**value = with_this;
 		}
-		//else if (**value == '0'
-		//		&& (*(*value + 1) == 'x' || *(*value + 1) == 'X'))
 		else if (ft_ishex(*value))
 		{
 			*(*fill_it + 1) = *(*value + 1);
@@ -77,7 +74,7 @@ static void		ft_fix_sign(char **value, char **fill_it, char with_this)
 	}
 }
 
-static char		*ft_prec(int prec, char specif, char *value)
+static char		*ft_prec(int prec, char specif, char *value, char *sign)
 {
 	char	*fill_it;
 	char	*tmp;
@@ -87,7 +84,7 @@ static char		*ft_prec(int prec, char specif, char *value)
 	if (prec == 0) 
 	{
 		free(value);
-		value = (specif == 'p') ? ft_strdup("0x") : ft_strdup("");
+		value = ft_strdup(sign);
 	}
 	else if ((specif == 's' || ((len = prec - ft_strlen(value)) > 0)) && prec >= 0)
 	{
@@ -123,7 +120,8 @@ char			*ft_flags(t_printf **prototyp, char *value)
 	char	*result;
 	int		len;
 
-	value = (ft_prec((*prototyp)->prec, (*prototyp)->specif, value));
+	sign = ft_getsign((*prototyp)->flags, (*prototyp)->specif, &value);
+	value = (ft_prec((*prototyp)->prec, (*prototyp)->specif, value), sign);
 	len = (*prototyp)->width - ft_strlen(value);
 	ft_checksign((*prototyp)->flags, (*prototyp)->specif, &value, &len);
 	if (len > 0)

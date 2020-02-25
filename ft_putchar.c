@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_pencs.c                                      :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 00:38:09 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/26 00:38:13 by mpark-ki         ###   ########.fr       */
+/*   Created: 2020/02/26 00:40:21 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/26 00:40:25 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isp(char c)
-{
-	return (c == 'p');
-}
+#include "libft.h"
 
-int		ft_ise(char c)
+void	ft_putchar(char c)
 {
-	return (c == 'e' || c == 'E');
-}
-
-int		ft_isn(char c)
-{
-	return (c == 'n');
-}
-
-int		ft_isc(char c)
-{
-	return (c == 'c');
-}
-
-int		ft_iss(char c)
-{
-	return (c == 's');
+	write(1, &c, 1);
 }

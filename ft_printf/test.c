@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myntcake <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 21:27:23 by myntcake          #+#    #+#             */
-/*   Updated: 2020/02/24 22:36:24 by myntcake         ###   ########.fr       */
+/*   Created: 2020/02/26 00:41:39 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/26 00:41:42 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,140 @@
 
 int		main(void)
 {
-	printf("d:%+5d\n", 1);
-	printf("d:% 5d\n", 1);
-	printf("d:%05d\n", 1);
-	printf("+0d:%+05d\n", 1);
-	printf(" 0d:% 05d\n", 1);
-	printf("00d:%005d\n", 1);
-	printf("d:%+5d\n", 0);
-	printf("d:% 5d\n", 0);
-	printf("d:%05d\n", 0);
-	printf("+d:%+*d\n", 1, 1);
-	printf(" d:% *d\n", 1, 1);
-	printf("0d:%0*d\n", 1, 1);
-	printf("+d:%+*d\n", 1, 0);
-	printf(" d:% *d\n", 1, 0);
-	printf("0d:%0*d\n", 1, 0);
+	int i;
 
+	i = 0;
+	i = printf("5d:%5d.\n5d:%5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("+5d:%+5d.\n+5d:%+5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(" 5d:% 5d.\n 5d:% 5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("05d:%05d.\n05d:%05d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("+05d:%+05d.\n+05d:%05d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(" 05d:% 05d.\n 05d:% 05d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("005d:%005d.\n005d:%005d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("5x:%5x.\n5x:%5x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("+5x:%+5x.\n+5x:%+5x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(" 5x:% 5x.\n 5x:% 5x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("05x:%05x.\n05x:%05x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("+05x:%+05x.\n+05x:%05x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(" 05x:% 05x.\n 05x:% 05x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("005x:%005x.\n005x:%005x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#05x:%#05x.\n#05x:%#05x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#05x:%#05x.\n#05x:%#05x.\n", 0, -0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#05x:%#x.\n#05x:%#x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#05x:%#x.\n#05x:%#x.\n", 0, -0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5x:%#0.5x.\n#0.5x:%#0.5x.\n", 0, -0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5x:%#0.5x.\n#0.5x:%#0.5x.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5d:%#0.5d.\n#0.5d:%#0.5d.\n", 0, -0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5d:%#0.5d.\n#0.5d:%#0.5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5d:%+0.5d.\n#0.5d:%+0.5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5d:%0.5d.\n#0.5d:%0.5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.5d:% 0.5d.\n#0.5d:% 0.5d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#0.d:% 0.d.\n#0.d:% 0.d.\n", 1, -1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(".d:% .d.\n.d:% .d.\n", 0, -0);
+	printf("i:%d\n", i);
+	i = 0;
 	/*
-	printf("d:%+5d\n", 234);
+	i = printf("d:%+5d\n", 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("d:% 5d\n", 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("d:%05d\n", 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("+d:%+*d\n", 1, 1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(" d:% *d\n", 1, 1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("0d:%0*d\n", 1, 1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("+d:%+*d\n", 1, 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf(" d:% *d\n", 1, 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("0d:%0*d\n", 1, 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#x:%#0*x\n", 3, 1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#x:%#0*x\n", 3, 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#x:%#*x\n", 3, 1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#x:%#*x\n", 3, 0);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#x:%#x\n", 1);
+	printf("i:%d\n", i);
+	i = 0;
+	i = printf("#x:%#x\n", 0);
+	printf("i:%d\n", i);
+	i = 0;
+	*/
+	
+	/*
+	   printf("d:%+5d\n", 234);
 	printf("d:% 5d\n", 234);
 	printf("d:%#5d\n", 234);
 	printf("d:%05d\n", 234);

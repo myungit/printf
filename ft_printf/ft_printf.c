@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/23 20:15:40 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/26 00:36:06 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ static void		diuoxfp(char specif, va_list args, char **value)
 				ft_ftoa(va_arg(args, double)));
 	else if (specif == 'p')
 	{
-		tmp = ft_xitoa(va_arg(args, unsigned long int));
-		*value = ft_strjoin("0x", tmp);
-		free(tmp);
+		*value = ft_xitoa(va_arg(args, unsigned long int));
 	}
 }
 
@@ -64,15 +62,13 @@ static char		*save_value(char spec, va_list args)
 	return (value);
 }
 
-static void		ft_printstr(char specif, char *str, int len)
+static void		ft_printstr(char specif, char *str)
 {
-	/*
 	int i;
 
 	i = 0;
 	if (specif == 'c')
 	{
-		len--;
 		while (str[i] || len--)
 		{
 			write(1, &(str[i]), 1);
@@ -80,9 +76,7 @@ static void		ft_printstr(char specif, char *str, int len)
 		}
 	}
 	else
-	*/
-	if (specif && len)
-		ft_putstr_fd(str, 1);
+		ft_putstr(str);
 }
 
 static int		convert_all(const char **format,
