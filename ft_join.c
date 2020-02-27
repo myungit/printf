@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_join.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 09:51:51 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/27 03:51:43 by mpark-ki         ###   ########.fr       */
+/*   Created: 2020/02/27 03:51:01 by mpark-ki          #+#    #+#             */
+/*   Updated: 2020/02/27 04:17:02 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free(int i, ...)
+char	*ft_join(int i, ...)
 {
 	va_list	args;
+	char	*tmp;
+	char	*str;
+	char	*result;
 
 	va_start(args, i);
+	result = ft_strdup("");
 	while (i--)
-		free(va_arg(args, void*));
-	va_end(args);
+	{
+		str = va_arg(args, char*);
+		tmp = ft_strjoin(result, str);
+		free(result);
+		result = ft_strdup(tmp);
+		free(tmp);
+	}
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:27 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/23 20:15:40 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/27 03:23:43 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,21 @@ int				ft_printf(const char *format, ...);
 char			*ft_flags(t_printf **prototyp, char *value);
 void			ft_save_fwp(t_printf **prototyp, const char **format,
 				va_list args);
+int				ft_isdi(char c);
+int				ft_isu(char c);
+int				ft_iso(char c);
+int				ft_isx(char c);
+int				ft_isf(char c);
+int				ft_isp(char c);
+int				ft_ise(char c);
+int				ft_isn(char c);
+int				ft_isc(char c);
+int				ft_iss(char c);
+int				ft_ispercent(char c);
+int				ft_isspecif(char c);
+int				ft_isflag(char c);
+int				ft_is_num_asterisk(char c);
+int				ft_get_num_asterisk(char *str, va_list args);
+char			*ft_getsign(char *flag, char specif, char **str);
+
 #endif

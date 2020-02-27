@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 20:43:59 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/26 00:36:43 by myntcake         ###   ########.fr       */
+/*   Updated: 2020/02/27 04:02:35 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
@@ -75,5 +76,6 @@ char			*ft_allcaps(char *str);
 int				ft_iscaps(int c);
 void			ft_free(int i, ...);
 int				ft_positiv(int num);
+char			*ft_join(int i, ...);
 
 #endif
