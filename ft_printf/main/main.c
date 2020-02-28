@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 17:25:26 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/18 12:33:23 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/27 20:23:38 by myntcake         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,6 @@ int		main(void)
 		y -= 654321;
 	}
 	z = 0;
-	while (*ss)
-	{
-		if (ft_printf("Hola %p\n", &ss)
-				!= printf("Hola %p\n", &ss))
-		{
-			printf("[FAIL] with %%p at i = %p\n", &ss);
-			p++;
-		}
-		ss++;
-	}
 	float	a;
 	float	b;
 	a = -3.0123f;
@@ -155,12 +145,6 @@ int		main(void)
 			!= printf("Hola %f %F\n", a / 0.0, b / 0.0))
 	{
 		printf("[FAIL] with %%f or %%F at i = %f\n", a);
-		f++;
-	}
-	if (ft_printf("Hola %f %F\n", sqrt(-2), sqrt(-5))
-			!= printf("Hola %f %F\n", sqrt(-2), sqrt(-5)))
-	{
-		printf("[FAIL] with %%f or %%F at i = %f\n", sqrt(-2));
 		f++;
 	}
 	z = 0;
@@ -199,6 +183,6 @@ int		main(void)
 				"[FAIL] %d times %%s\n" 
 				"[FAIL] %d times %%p\n" 
 				"[FAIL] %d times %% \n", d, i, u, c, o, x, f, f, s, p, w);
-	system("leaks a.out");
+	free(ss);
 	return (0);
 }

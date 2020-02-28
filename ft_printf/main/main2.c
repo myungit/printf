@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 17:02:16 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/23 18:31:20 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/27 20:25:51 by myntcake         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int		main(void)
 	a = e_list_val3;
 	*/
 
-	/*
 	ft_printf("1:%+10d\n", 123);
 	printf("2:%+10d\n", 123);
 	ft_printf("1:%---++---5d\n", 123);
@@ -155,10 +154,8 @@ int		main(void)
 	ft_printf("2:%-7.5d.\n", NULL);
 	printf("1:%-7.5s.\n", NULL);
 	ft_printf("2:%-7.5s.\n", NULL);
-	*/
-	//printf("1:%7.5p.\n", 1234);
-	//ft_printf("2:%7.5p.\n", 1234);
-	/*
+	printf("1:%7.5p.\n", 1234);
+	ft_printf("2:%7.5p.\n", 1234);
 	printf("hello, %s.\n", NULL);
 	ft_printf("hello, %s.\n", NULL);
 	printf("hello, %s.\n", NULL);
@@ -169,8 +166,6 @@ int		main(void)
 	printf("2:%5d.\n", 0);
 	ft_printf("1:%5.0d.\n", 0);
 	printf("2:%5.0d.\n", 0);
-	*/
-		/*
 	ft_printf("5:%.x\n", NULL);
 	printf("6:%.x\n", NULL);
 	ft_printf("5:%.x\n", 0);
@@ -188,22 +183,18 @@ int		main(void)
 	ft_printf("5:%p\n", 0);
 	printf("6:%p\n", 0);
 
-		int i;
+	int i;
 	int j;
 	i = printf("orig:%5\n");
 	printf("orig i:%d\n", i);
 	j = ft_printf("orig:%5\n");
 	ft_printf("my j:%d\n", j);
-	*/
 	printf("orig:%c",0);
 	ft_printf("my:%c", 0);
-	/*
 	ft_printf("%5");
 	printf("%5");
 	ft_printf("%05");
 	printf("%05");
-	*/
-	/*
 	ft_printf("5:%2.9p\n", 1234);
 	printf("6:%2.9p\n", 1234);
 	ft_printf("5:%#2.9x\n", 1234);
@@ -218,15 +209,11 @@ int		main(void)
 	printf("6:%-2.9d\n", 1234);
 	ft_printf("5:%-9.2d\n", 1234);
 	printf("6:%-9.2d\n", 1234);
-	system("leaks a.out");
-	*/
-	/*
 	printf("%-4.0d\n", 123);
 	ft_printf("1:%+10.0d\n", 123);
 	printf("2:%+10.0d\n", 123);
 	ft_printf("1:%---++---5.0d\n", 123);
 	printf("2:%---++---5.0d\n", 123);
-	*/
 	/*
 	printf("other\n");
 	printf("%+c\n", 'H');
