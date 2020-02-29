@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:27 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 02:19:45 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 20:49:22 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int				ft_ise(char c);
 int				ft_isn(char c);
 int				ft_isc(char c);
 int				ft_iss(char c);
+int				ft_iszero(char *str);
 int				ft_ispercent(char c);
 int				ft_isspecif(char c);
 int				ft_isflag(char c);

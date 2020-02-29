@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 00:24:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 19:38:31 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:02:51 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static char		*ft_join_zero(t_printf *tmp, char *sign, int len)
 
 	if (ft_isdiouxp(tmp->specif))
 	{
-		first_str = (char*)ft_calloc(sizeof(char), len + 1);
 		len = ft_fixlen(sign, len);
+		first_str = (char*)ft_calloc(sizeof(char), len + 1);
 		ft_memset(first_str, '0', len);
 		result = ft_strjoin(first_str, tmp->value);
 	}
@@ -54,30 +54,26 @@ static char		*ft_join_zero(t_printf *tmp, char *sign, int len)
 	return (result);
 }
 
-static char		*ft_getprec_s(t_printf *tmp)
+static int		check_o(t_printf *tmp)
 {
-	char	*result;
-
-	if (ft_strnstr(tmp->value, "(null)", 6))
+	if (ft_iszero(tmp->value))
 	{
-		if (tmp->prec >= 6)
-			result = ft_substr(tmp->value, 0, tmp->prec);
-		else
-			result = ft_strdup("");
+		if (ft_iso(tmp->specif) && ft_strchr(tmp->flags, '#'))
+			return (1);
 	}
-	else
-		result = (ft_substr(tmp->value, 0, tmp->prec));
-	free(tmp->value);
-	return (result);
+	return (0);
 }
 
 void			ft_format_prec(t_printf *tmp, char **sign)
 {
 	int		len;
+	char	*str;
 
 	len = tmp->prec - (ft_strlen(tmp->value) + ft_strlen(*sign));
-	if (tmp->prec == 0 && !ft_isp(tmp->specif))
+	if (tmp->prec == 0)
 	{
+		if (check_o(tmp))
+			*sign = "0";
 		free(tmp->value);
 		tmp->value = ft_strdup(*sign);
 		*sign = "";
@@ -85,7 +81,11 @@ void			ft_format_prec(t_printf *tmp, char **sign)
 	else if (tmp->prec >= 0)
 	{
 		if (ft_iss(tmp->specif))
-			tmp->value = ft_getprec_s(tmp);
+		{
+			str = ft_substr(tmp->value, 0, tmp->prec);
+			free(tmp->value);
+			tmp->value = str;
+		}
 		else if (len > 0)
 			tmp->value = ft_join_zero(tmp, *sign, len);
 	}

@@ -6,11 +6,18 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 22:47:00 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 19:38:55 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:03:20 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int			ft_iszero(char *str)
+{
+	if (*str)
+		return ((*str == '0' && ft_strlen(str) == 1));
+	return (0);
+}
 
 static char	*ft_move_one(char *str)
 {
@@ -21,34 +28,16 @@ static char	*ft_move_one(char *str)
 	return (result);
 }
 
-static int	ft_iszero(char *str)
-{
-	if (*str)
-		return ((*str == '0' && ft_strlen(str) == 1));
-	return (0);
-}
-
-static int	ft_isnil(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str)
-	{
-		if (ft_strnstr(str, "(nil)", 5))
-			i++;
-	}
-	return (i);
-}
-
 static char	*ft_getprefix(char specif, char *str)
 {
 	char	*sign;
 
 	sign = "";
-	if (!ft_iszero(str) && !ft_isnil(str))
+	if (ft_isp(specif))
+		sign = "0x";
+	else if (!ft_iszero(str))
 	{
-		if (ft_isx(specif) || ft_isp(specif))
+		if (ft_isx(specif))
 			sign = (specif == 'X') ? "0X" : "0x";
 		if (ft_iso(specif))
 			sign = "0";

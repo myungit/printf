@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:50:39 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 19:45:37 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 20:15:33 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*ft_format_flag(t_printf *tmp, int len)
 
 	fill_it = (char*)ft_calloc(sizeof(char), len + 1);
 	with_this = ' ';
-	if (tmp->prec == -1 && !(ft_iss(tmp->specif) || ft_isc(tmp->specif)))
+	if (tmp->prec == -1)
 	{
 		if (ft_strchr(tmp->flags, '0') && !(ft_strchr(tmp->flags, '-')))
 			with_this = '0';
@@ -72,12 +72,13 @@ int				ft_print_all(t_printf *tmp)
 	int		len;
 	char	*sign;
 
+	result = 0;
 	sign = ft_getsign(tmp);
 	ft_format_prec(tmp, &sign);
 	len = tmp->width - (ft_strlen(tmp->value) + ft_strlen(sign));
 	if (tmp->specif == 'c' && tmp->value[0] == 0)
 		len--;
-	if (len > 0 && !ft_ispercent(tmp->specif))
+	if (len > 0)
 		result = ft_print_w_flags(tmp, len, sign);
 	else if ((ft_isc(tmp->specif)))
 		ft_putchar(tmp->value[0]);
