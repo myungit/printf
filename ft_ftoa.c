@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 01:20:20 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/28 22:32:16 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 02:26:20 by myntcake         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,12 @@ char		*ft_ftoa(float n)
 
 	if (!(result = ft_inf_nan(n)))
 	{
-		//printf("\nfirst: %f\n", n);
 		sign = 0;
 		if (n < 0)
 		{
 			n = -n;
 			sign = 1;
 		}
-		//cp_n = (n * (ft_power(10, 6))) - (((long int)n) * ft_power(10, 6));
 		cp_n = n * ft_power(10, 6) - (long int)n * (ft_power(10, 6));
 		if ((((long int)(n * ft_power(10, 7))) % 10) >= 5)
 			cp_n++;
