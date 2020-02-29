@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 22:44:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 19:59:50 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:42:16 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char		*diuoxfp(char specif, va_list args)
 	else if (ft_iso(specif))
 		value = ft_ouitoa(va_arg(args, unsigned int));
 	else if (ft_isx(specif))
-		value = ft_xitoa(va_arg(args, unsigned long int));
+		value = ft_xitoa(va_arg(args, unsigned int));
 	else if (ft_isp(specif))
 		value = ft_xitoa(va_arg(args, unsigned long int));
 	else if (ft_isf(specif))
