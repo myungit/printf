@@ -6,12 +6,11 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 14:33:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/27 22:45:54 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 01:16:30 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static t_printf	*ft_init_prot(const char **format)
 {
@@ -33,18 +32,15 @@ static t_printf	*ft_init_prot(const char **format)
 static int		convert_all(const char **format,
 		va_list args, int result)
 {
-	int			tmp;
+	int			len;
 	t_printf	*prototyp;
 
 	prototyp = ft_init_prot(&(*format));
-	ft_save_fwp(prototyp, &(*format), args);
-	if (*format && ft_isspecif(**format))
+	if (ft_save_format(prototyp, &(*format), args))
 	{
-		prototyp->specif = **format;
-		prototyp->value = ft_getvalue(prototyp->specif, args);
-		tmp = ft_flags(prototyp, prototyp->value);
-		if (!ft_isc(prototyp->specif) && prototyp->specif)
-			result += (tmp);
+		len = ft_print_all(prototyp);
+		if (!ft_isc(prototyp->specif))
+			result += len;
 		else if (prototyp->width)
 			result += prototyp->width;
 		else

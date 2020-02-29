@@ -6,26 +6,20 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 22:44:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/27 23:07:06 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 01:43:22 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		diuoxfp(char specif, va_list args, char **value)
+static char		*check_nil(va_list args)
 {
-	if (ft_isdi(specif))
-		*value = ft_itoa(va_arg(args, int));
-	else if (ft_isu(specif))
-		*value = ft_uitoa(va_arg(args, unsigned int));
-	else if (ft_iso(specif))
-		*value = ft_ouitoa(va_arg(args, unsigned int));
-	else if (ft_isx(specif))
-		*value = ft_xitoa(va_arg(args, unsigned int));
-	else if (ft_isp(specif))
-		*value = ft_xitoa(va_arg(args, unsigned long int));
-	else if (ft_isf(specif))
-		*value = ft_ftoa(va_arg(args, double));
+	unsigned long int num;
+
+	num = va_arg(args, unsigned long int);
+	if (num == 0)
+		return (ft_strdup("(nil)"));
+	return (ft_xitoa(num));
 }
 
 static char		*check_null(char *str)
@@ -35,11 +29,31 @@ static char		*check_null(char *str)
 	return (ft_strdup(str));
 }
 
+static char		*diuoxfp(char specif, va_list args)
+{
+	char	*value;
+
+	value = "";
+	if (ft_isdi(specif))
+		value = ft_itoa(va_arg(args, int));
+	else if (ft_isu(specif))
+		value = ft_uitoa(va_arg(args, unsigned int));
+	else if (ft_iso(specif))
+		value = ft_ouitoa(va_arg(args, unsigned int));
+	else if (ft_isx(specif))
+		value = ft_xitoa(va_arg(args, unsigned long int));
+	else if (ft_isp(specif))
+		value = check_nil(args);
+	else if (ft_isf(specif))
+		value = ft_ftoa(va_arg(args, double));
+	return (value);
+}
+
 char		*ft_getvalue(char specif, va_list args)
 {
 	char	*value;
 
-	diuoxfp(specif, args, &value);
+	value = diuoxfp(specif, args);
 	if (ft_ise(specif))
 		return (0);
 	else if (ft_isn(specif))
