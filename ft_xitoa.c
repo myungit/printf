@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 00:39:28 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/26 00:39:30 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 02:31:44 by myntcake         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_count(unsigned long int n)
 char		*ft_xitoa(unsigned long int n)
 {
 	char				*num;
-	int					i;
+	unsigned long int	i;
 	unsigned long int	cp_n;
 
 	cp_n = (unsigned long int)n;
