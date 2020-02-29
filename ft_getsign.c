@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 22:47:00 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 01:50:13 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 19:38:55 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static char	*ft_getprefix(char specif, char *str)
 		if (ft_isx(specif) || ft_isp(specif))
 			sign = (specif == 'X') ? "0X" : "0x";
 		if (ft_iso(specif))
-			sign = "0"; } 
+			sign = "0";
+	}
 	return (sign);
 }
 

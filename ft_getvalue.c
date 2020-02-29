@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 22:44:36 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 01:43:22 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 19:43:11 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char		*diuoxfp(char specif, va_list args)
 	return (value);
 }
 
-char		*ft_getvalue(char specif, va_list args)
+char			*ft_getvalue(char specif, va_list args)
 {
 	char	*value;
 

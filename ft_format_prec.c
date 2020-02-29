@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 00:24:34 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 02:03:57 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 19:38:31 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 static int		ft_isdiouxp(char specif)
 {
 	return ((ft_isdi(specif) || ft_iso(specif) ||
-			ft_isu(specif) || ft_isx(specif) ||
-			ft_isp(specif)));
+				ft_isu(specif) || ft_isx(specif) ||
+				ft_isp(specif)));
 }
 
 static int		ft_fixlen(char *str, int len)
 {
 	if (*str == '-' || *str == '+' || *str == ' ')
-		len ++;
+		len++;
 	else if (ft_strlen(str) >= 2 && (str[0] == '0' && ft_isx(str[1])))
 		len += 2;
 	return (len);
 }
-
 
 static char		*ft_join_zero(t_printf *tmp, char *sign, int len)
 {
@@ -58,6 +57,7 @@ static char		*ft_join_zero(t_printf *tmp, char *sign, int len)
 static char		*ft_getprec_s(t_printf *tmp)
 {
 	char	*result;
+
 	if (ft_strnstr(tmp->value, "(null)", 6))
 	{
 		if (tmp->prec >= 6)
@@ -71,12 +71,12 @@ static char		*ft_getprec_s(t_printf *tmp)
 	return (result);
 }
 
-void		ft_format_prec(t_printf *tmp, char **sign)
+void			ft_format_prec(t_printf *tmp, char **sign)
 {
 	int		len;
 
 	len = tmp->prec - (ft_strlen(tmp->value) + ft_strlen(*sign));
-	if (tmp->prec == 0 && !ft_isp(tmp->specif)) 
+	if (tmp->prec == 0 && !ft_isp(tmp->specif))
 	{
 		free(tmp->value);
 		tmp->value = ft_strdup(*sign);

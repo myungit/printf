@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 22:18:55 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 01:43:22 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 19:44:28 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char		*ft_addb(char *str, char *c)
 {
 	char	*tmp;
-	
+
 	tmp = ft_strjoin(str, c);
 	free(str);
 	return (tmp);
@@ -51,8 +51,7 @@ static void		ft_save_w(t_printf *tmp, const char *format, va_list args)
 	}
 }
 
-static void		ft_save_prec(t_printf *tmp, const char **format,
-				va_list args)
+static void		ft_save_prec(t_printf *tmp, const char **format, va_list args)
 {
 	while (**format == '.')
 	{
@@ -67,8 +66,7 @@ static void		ft_save_prec(t_printf *tmp, const char **format,
 	}
 }
 
-
-int			ft_save_format(t_printf *tmp, const char **format,
+int				ft_save_format(t_printf *tmp, const char **format,
 				va_list args)
 {
 	if (ft_isflag(**format))

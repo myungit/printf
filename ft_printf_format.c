@@ -6,7 +6,7 @@
 /*   By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:50:39 by mpark-ki          #+#    #+#             */
-/*   Updated: 2020/02/29 02:03:23 by mpark-ki         ###   ########.fr       */
+/*   Updated: 2020/02/29 19:45:37 by mpark-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static int		ft_print_w_flags(t_printf *tmp, int len, char *sign)
 	if (ft_strchr(tmp->flags, '-'))
 	{
 		ft_putstr(sign);
-		(ft_isc(tmp->specif)) ? ft_putchar(tmp->value[0]) : ft_putstr(tmp->value);
+		if (ft_isc(tmp->specif))
+			ft_putchar(tmp->value[0]);
+		else
+			ft_putstr(tmp->value);
 		ft_putstr(fill_it);
 	}
 	else
@@ -63,7 +66,7 @@ static int		ft_print_w_flags(t_printf *tmp, int len, char *sign)
 	return (result);
 }
 
-int			ft_print_all(t_printf *tmp)
+int				ft_print_all(t_printf *tmp)
 {
 	int		result;
 	int		len;
