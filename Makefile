@@ -6,7 +6,7 @@
 #    By: mpark-ki <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 09:04:35 by mpark-ki          #+#    #+#              #
-#    Updated: 2020/02/29 02:19:11 by mpark-ki         ###   ########.fr        #
+#    Updated: 2020/03/04 08:08:21 by mpark-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ $(NAME):
 	ar rc $@ $(SRC_OBJS)
 	ranlib $@
 
+bonus: all
+
 .PHONY: clean
 clean:
 	make -C ./libft clean
@@ -41,3 +43,5 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+	
+rebonus: fclean all
